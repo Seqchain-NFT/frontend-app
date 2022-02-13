@@ -1,0 +1,28 @@
+@use 'sass:map';
+
+$breakpoints: (
+  xlg: 1920px,
+  lg: 1440px,
+  md: 1080px,
+  sm: 576px,
+);
+
+@function point($name) {
+  @return map.get($breakpoints, $name);
+}
+
+@mixin documentScale() {
+  font-size: 0.8333333333333333vw;
+  @media screen and (max-width: point(xlg)) {
+    font-size: 0.9333333333333333vw;
+  }
+  @media screen and (max-width: point(lg)) {
+    font-size: 1.11111111111vw;
+  }
+  @media screen and (max-width: point(md)) {
+    font-size: 1.11111111111vw;
+  }
+  @media screen and (max-width: point(sm)) {
+    font-size: 4.102564102564103vw;
+  }
+} 

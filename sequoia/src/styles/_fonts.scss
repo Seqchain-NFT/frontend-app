@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'mixins' as *;
+
+$fonts: (12, 14, 16, 24, 32);
+
+@mixin generateFonts() {
+    @each $name in $fonts {
+        --font-size-#{$name}: #{rem($name)};
+    }   
+}
+
+@function font($name) {
+    @if not list.index($fonts, $name) {
+        @error '"#{$name}" is not a valid size';
+    }
+   @return var(--font-size-#{$name});
+}
+
+@mixin importFonts() {
+    @font-face {
+        font-family: "Lufga";
+        src: url("~assets/fonts/lufga/Lufga-SemiBold.otf") format("truetype");
+        font-style: normal;
+        font-weight: 600;
+    }
+    @font-face {
+        font-family: "TT Fors";
+        src: url("~assets/fonts/fors/TT Fors Medium.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+@mixin font-lufga-semibold {
+    font-family: "Lufga", sans-serif;
+    font-weight: 600;
+}
+
+@mixin font-fors-medium {
+    font-family: "Lufga", sans-serif;
+    font-weight: 400;
+}
+

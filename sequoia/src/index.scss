@@ -1,0 +1,14 @@
+@use './styles/colors';
+@use './styles/fonts';
+@use './styles/grid';
+
+html {
+    @include grid.documentScale;
+}
+
+:root {
+    @include colors.generateColors;
+    @include fonts.generateFonts;
+}
+
+@include fonts.importFonts;

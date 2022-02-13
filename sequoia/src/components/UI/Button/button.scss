@@ -1,0 +1,52 @@
+@use "../../../styles" as *;
+
+:root {
+    --button-border: #{rem(6)};
+}
+
+.button {
+    @include font-lufga-semibold;
+    font-size: font(14);
+    border: none;
+    outline: none;
+    background: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: none;
+    border-radius: var(--button-border);
+    transition: background-color .3s, border-color .3s, color .3s, transform .3s;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    svg { width: rem(24); height: rem(18); margin-right: rem(8); }
+    svg path { transition: fill .3s, stroke .3s; }
+}
+
+@each $name, $color in allColors() {
+    .button.button-outline-#{$name} {
+        color: color($name);
+        border: 1.6px solid color($name);
+
+        padding: rem(12) rem(42);
+        letter-spacing: 0.04em;
+
+        &:hover { background-color: rgba($color, 20%); }
+        &:active { background-color: color($name); color: color(dark); }
+        &:active > svg > path { fill: color(dark); }
+    }
+}
+
+@each $name, $color in allColors() {
+    .button.button-#{$name} {
+        color: color(primary);
+        background-color: color($name);
+
+        padding: rem(16) rem(22);
+        letter-spacing: 0.065em;
+
+        &:hover { background-color: rgba($color, 80%); transform: matrix(1.1, 0, 0, 1, 0, 0);}
+        &:active { background-color: rgba($color, 50%); }
+    }
+}

@@ -46,7 +46,7 @@
         padding: rem(16) rem(22);
         letter-spacing: 0.065em;
 
-        &:hover { background-color: rgba($color, 80%); transform: matrix(1.1, 0, 0, 1, 0, 0);}
+        &:hover { background-color: rgba($color, 80%); }
         &:active { background-color: rgba($color, 50%); }
     }
 }

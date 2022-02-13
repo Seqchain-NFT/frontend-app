@@ -1,5 +1,6 @@
 export default {
     mouse: null,
+    startTime: performance.now(),
     handlers: [],
 
     getElementCoords(domElement) {
@@ -102,7 +103,10 @@ export default {
     },
     render() {
         requestAnimationFrame(function render(time) {
-            this.handlers.forEach(item => item.hd(time))
+            if (time - this.startTime > 20) {
+                this.startTime = performance.now()
+                this.handlers.forEach(item => item.hd(time))
+            }
             requestAnimationFrame(render.bind(this))
         }.bind(this))
     },

@@ -1,13 +1,18 @@
 import { useRef, useEffect } from 'react'
 
 import './Welcome.scss'
-import groundImage from './ground.png'
-import nftCommonImage from './nft-common.png'
-import nftRareImage from './nft-rare.png'
-import nftLegendaryImage from './nft-legendary.png'
+
+import groundImage from './assets/ground.png'
+import nftCommonImage from './assets/nft-common.png'
+import nftRareImage from './assets/nft-rare.png'
+import nftLegendaryImage from './assets/nft-legendary.png'
+
+import blur1 from './assets/blur-1.png'
+import blur2 from './assets/blur-2.png'
+import blur3 from './assets/blur-3.png'
+import blur4 from './assets/blur-4.png'
 
 import { ReactComponent as DiscordIcon } from '../../assets/svg/discord.svg'
-
 import { ButtonAccent, ButtonSecondary } from '../../components/UI/Button/Button'
 
 import renderer from '../../utils/renderer'
@@ -20,13 +25,14 @@ const Welcome = () => {
     parallaxElements[2] = useRef()
 
     const canvas = useRef()
+    const blurImages = [ blur1, blur2, blur3, blur4 ]
 
     useEffect(() => {
         renderer.setToRender(groundParallax.bind(undefined, ground.current), 'groundParallax')
         renderer.setToRender(welcomeMouseParallax.bind(undefined, ground.current, parallaxElements), 'welcomeMouseParallax')
 
         const context = canvas.current.getContext('2d')
-        renderer.setToRender(canvasAnimation.bind(undefined, canvas.current, context), 'canvasAnimation')
+        renderer.setToRender(canvasAnimation.bind(undefined, canvas.current, context, blurImages), 'canvasAnimation')
     }, [])
 
     return (
@@ -80,7 +86,7 @@ function welcomeMouseParallax(ground, domElements) {
     }
 }
 
-function canvasAnimation(canvas, context) {
+function canvasAnimation(canvas, context, blurImages) {
     if (renderer.isElementVisible(canvas)) {
 
     }

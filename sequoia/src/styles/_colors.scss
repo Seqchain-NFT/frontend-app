@@ -4,7 +4,9 @@ $colors: (
     primary: white,
     accent: #1C9E50,
     secondary: #5968EA,
+    common: #ECECEC,
     dark: #1B1B1B,
+    body: #161315,
 );
 
 @mixin generateColors() {

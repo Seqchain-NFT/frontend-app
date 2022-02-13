@@ -12,3 +12,27 @@ html {
 }
 
 @include fonts.importFonts;
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-color: colors.color(dark) colors.color(secondary);
+    scrollbar-width: thin;
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background-color: colors.color(dark); }
+    ::-webkit-scrollbar-thumb { background-color: colors.color(secondary); }
+}
+
+body {
+    background-color: colors.color(body);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    text-transform: none;
+}
+

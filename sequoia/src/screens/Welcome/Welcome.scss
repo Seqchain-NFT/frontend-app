@@ -1,0 +1,44 @@
+@use '../../styles' as *;
+
+.welcome {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome__canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    z-index: 1;
+
+    canvas,
+    .welcome__canvas-ground {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        top: 0; left: 0;
+    }
+
+    .welcome__canvas-ground {
+        @media screen and (min-aspect-ratio: 1440 / 870) {
+            top: -10vh;
+        }
+        @media screen and (min-aspect-ratio: 1440 / 800) {
+            top: -20vh;
+        }
+        @media screen and (min-aspect-ratio: 1440 / 700) {
+            top: -30vh;
+        }
+        @media screen and (min-aspect-ratio: 1440 / 630) {
+            top: -40vh;
+        }
+    }
+}
+
+.welcome__text-content {
+    z-index: 2;
+}
+

@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.scss'
+import './Button.scss'
 
 const ButtonOutlinePrimary = ({ children }) => {
     return (
@@ -7,21 +7,21 @@ const ButtonOutlinePrimary = ({ children }) => {
     )
 }
 
-const ButtonOutlineAccent = ({ value }) => {
+const ButtonOutlineAccent = ({ children }) => {
     return (
-        <button type='button' className='button button-outline-accent'>{ value }</button>
+        <button type='button' className='button button-outline-accent'>{ children }</button>
     )
 }
 
-const ButtonAccent = ({ value }) => {
+const ButtonAccent = ({ children }) => {
     return (
-        <button type='button' className='button button-accent'>{ value }</button>
+        <button type='button' className='button button-accent'>{ children }</button>
     )
 }
 
-const ButtonSecondary = ({ value }) => {
+const ButtonSecondary = ({ children }) => {
     return (
-        <button type='button' className='button button-secondary'>{ value }</button>
+        <button type='button' className='button button-secondary'>{ children }</button>
     )
 }
 

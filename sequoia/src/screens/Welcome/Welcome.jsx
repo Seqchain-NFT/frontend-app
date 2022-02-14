@@ -73,15 +73,15 @@ const Welcome = () => {
                 </div>
                 <div className="welcome__description">
                     <div className="welcome__description-card">
-                        <h2>Real tree <br/>owner</h2>
+                        <h3>Real tree <br/>owner</h3>
                         <p>With the purchase of the Seqchain NFT you become the owner of a real Sequoia tree and a 20x20 meter plot of land in Taraclia, Moldova.</p>
                     </div>
                     <div className="welcome__description-card">
-                        <h2>Make impact on <br/>ecology</h2>
+                        <h3>Make impact on <br/>ecology</h3>
                         <p>Sequoia is one of the most ancient and durable trees in the world. It consumes a record amount of CO2 and purifies the air we breathe. </p>
                     </div>
                     <div className="welcome__description-card">
-                        <h2>Grow to <br/>Earn</h2>
+                        <h3>Grow to <br/>Earn</h3>
                         <p>The tree grows - you earn. Simple as that, right? Every day Seqchain NFT bears fruits in the form of SEQ coins. Don’t hesitate to make a profit from the sale of new trees!</p>
                     </div>
                 </div>

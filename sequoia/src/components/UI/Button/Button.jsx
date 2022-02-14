@@ -25,9 +25,16 @@ const ButtonSecondary = ({ children }) => {
     )
 }
 
+const ButtonEmpty = ({ children }) => {
+    return (
+        <button type='button' className='button-empty'>{ children }</button>
+    )
+}
+
 export { 
     ButtonOutlinePrimary, 
     ButtonOutlineAccent,
     ButtonAccent,
-    ButtonSecondary
+    ButtonSecondary,
+    ButtonEmpty
 }

@@ -24,6 +24,18 @@
     svg path { transition: fill .3s, stroke .3s; }
 }
 
+.button-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: none;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
 @each $name, $color in allColors() {
     .button.button-outline-#{$name} {
         color: color($name);

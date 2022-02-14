@@ -1,0 +1,234 @@
+@use '../../styles' as *;
+
+.meet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: rem(120) rem(190);
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        height: 400vw;
+        top: -120%; left: 50%;
+        transform: translateX(-50%);
+        background: url(./assets/blur.png);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+}
+
+.meet__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .meet__header-title {
+        h2 {
+            @include font-fors-medium;
+            font-size: font(40);
+            line-height: rem(40);
+            letter-spacing: -0.01em;
+            color: color(common-3);
+        }
+        svg {
+            width: rem(284);
+            height: auto;
+            margin-top: rem(22);
+        }
+    }
+
+    .glass-card {
+        --card-color: rgba(197, 158, 172, 0.158);
+        padding: rem(32) rem(38);
+        border-radius: rem(20);
+        background: var(--card-color);
+        color: color(primary);
+        width: rem(338);
+        @include font-fors-regular;
+        font-size: font(20);
+        letter-spacing: -0.01em;
+        line-height: rem(30);
+        margin-left: rem(48);
+    }
+}
+
+.meet__nft-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 80%;
+    height: rem(430);
+    border-radius: rem(30);
+    padding: rem(80) rem(112);
+    margin-top: rem(64);
+
+    color: color(darkest);
+    transition: width 1s ease;
+
+    &.common { background: url(./assets/nft-common-pattern.png); margin-top: rem(80); }
+    &.rare { background: url(./assets/nft-rare-pattern.png); flex-direction: row-reverse;}
+    &.epic { background: url(./assets/nft-epic-pattern.png); color:color(common);}
+
+    &.common, &.rare,
+    &.epic {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &.visible {
+        width: 100%;
+    }
+}
+
+.nft-card__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        h3 {
+            @include font-fors-medium;
+            font-size: font(56);
+            line-height: rem(72);
+            letter-spacing: -0.02em;
+        }
+        .title__icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: rem(45);
+            height: rem(42);
+            @include font-fors-bold;
+            font-size: font(16);
+            margin-left: rem(16);
+            margin-top: rem(14);
+            > div { margin-top: -2px; }
+            > div:nth-child(2) { @include font-fors-black; font-size: font(9); }
+            svg {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+            }
+        }
+    }
+
+    .subtitle {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @include font-fors-medium;
+        font-size: font(24);
+        line-height: rem(24);
+        letter-spacing: -0.01em;
+        margin-top: rem(8);
+        svg { cursor: pointer; margin-bottom: -3px; }
+    }
+
+    p {
+        @include font-fors-regular;
+        font-size: font(20);
+        line-height: rem(32);
+        letter-spacing: -0.01em;
+        margin-top: rem(32);
+        width: rem(394);
+    }
+}
+
+.nft-card__image {
+    position: relative;
+    flex: 1;
+    height: 100%;
+
+    img {
+        position: absolute;
+        width: rem(520);
+        top: -20%; left: 5%;
+
+        &.sky { top: 40%; left: 60%; transform: translate(-50%, -50%); }
+    }
+}
+@keyframes translate {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, - rem(32), 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.meet__nft-card.rare .nft-card__image img.nft { left: auto; right: 10%; }
+.meet__nft-card.rare .nft-card__image img.sky { left: auto; left: 50%; }
+
+.meet__nft-card.common .nft-card__image img.nft { animation: 10s translate infinite ease; }
+.meet__nft-card.rare .nft-card__image img.nft { animation: 10s translate 3s infinite ease; }
+.meet__nft-card.epic .nft-card__image img.nft { animation: 10s translate 6s infinite ease; }
+
+.meet__nft {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    margin-top: rem(200);
+    color: color(primary);
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 120vw;
+        height: 400vw;
+        top: -1000%; left: 50%;
+        transform: translateX(-50%);
+        background: url(./assets/blur-2.png);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        animation: 5s scale ease infinite;
+    }
+
+    .nft-card__image {
+        img {
+            width: 120%;
+            left: 30%;
+            top: rem(120);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        img.platform {
+            width: 180%;
+            left: 50%;
+            top: rem(110);
+        }
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-55%) scale(1);
+    }
+    to {
+        transform: translateX(-50%) scale(1);
+    }
+}

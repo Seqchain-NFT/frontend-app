@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: rem(100) rem(190);
+    padding: rem(120) rem(190);
 
     h2 {
         @include font-fors-medium;
@@ -19,7 +19,7 @@
 
         span {
             display: inline-block;
-            animation: skew 2s infinite cubic-bezier(.89,0,.1,1);
+            animation: skew 1s infinite cubic-bezier(.89,0,.1,1);
         }
     }
 

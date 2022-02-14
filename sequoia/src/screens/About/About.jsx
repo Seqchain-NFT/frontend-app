@@ -13,7 +13,7 @@ const About = () => {
                 <img className='nft-preview' src={nftPreviewImage} alt="" />
             </div> 
             <div className="about__text-content">
-                <h2>About seqchin nft</h2>
+                <h2>About seqchain nft</h2>
                 <p>
                     <span>Our team of enthusiasts is happy to introduce the project at the intersection of ecology and realm with blockchain and NFT technology.</span>
                     <span>Seqсhain NFT is a tokenized Sequoia and a 20x20m piece of land. The token is located on the Binance Smart Chain network.</span> 

@@ -4,6 +4,8 @@ import Header from "./components/Header/Header";
 import Welcome from "./screens/Welcome/Welcome";
 import About from "./screens/About/About";
 import Join from "./screens/Join/Join";
+import Meet from "./screens/Meet/Meet";
+import Mission from "./screens/Mission/Mission";
 
 
 import renderer from './utils/renderer'
@@ -22,6 +24,8 @@ const App = () => {
       <Welcome/>
       <About/>
       <Join/>
+      <Meet/>
+      <Mission/>
     </div>
   );
 }

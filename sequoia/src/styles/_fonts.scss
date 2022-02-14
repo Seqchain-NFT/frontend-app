@@ -2,7 +2,7 @@
 @use 'sass:list';
 @use 'mixins' as *;
 
-$fonts: (12, 14, 15, 18, 20, 24, 40, 70);
+$fonts: (9, 12, 14, 15, 16, 18, 20, 24, 40, 56, 70);
 
 @mixin generateFonts() {
     @each $name in $fonts {
@@ -42,23 +42,43 @@ $fonts: (12, 14, 15, 18, 20, 24, 40, 70);
         font-style: normal;
         font-weight: 600;
     }
+    @font-face {
+        font-family: "TT Fors";
+        src: url("~assets/fonts/fors/TT Fors Bold.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 700;
+    }
+    @font-face {
+        font-family: "TT Fors";
+        src: url("~assets/fonts/fors/TT Fors Black.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 900;
+    }
 }
 
 @mixin font-lufga-semibold {
     font-family: "Lufga", sans-serif;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 @mixin font-fors-medium {
     font-family: "TT Fors", sans-serif;
-    font-weight: 400;
+    font-weight: 400 !important;
 }
 @mixin font-fors-regular {
     font-family: "TT Fors", sans-serif;
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 @mixin font-fors-demibold {
     font-family: "TT Fors", sans-serif;
-    font-weight: 600;
+    font-weight: 600 !important;
+}
+@mixin font-fors-bold {
+    font-family: "TT Fors", sans-serif;
+    font-weight: 700 !important;
+}
+@mixin font-fors-black {
+    font-family: "TT Fors", sans-serif;
+    font-weight: 900 !important;
 }
 

@@ -99,7 +99,7 @@ function groundParallax(ground, canvas) {
 
 function welcomeMouseParallax(ground, domElements) {
     if (renderer.isElementVisible(ground)) {
-        const mouse = renderer.getMouseDocumentCoords()
+        const mouse = renderer.getMouseWindowCoords()
         domElements.forEach((element, idx) => {
             element.current.style.transform = `translate3d(${mouse.x * (idx + 1) / 200}px, ${mouse.y * (idx + 1) / 200}px, 0)`
         })

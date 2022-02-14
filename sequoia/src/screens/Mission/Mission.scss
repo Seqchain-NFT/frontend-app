@@ -1,0 +1,74 @@
+@use '../../styles' as *;
+
+.mission {
+    padding: rem(120) rem(190);
+    margin-top: rem(300);
+}
+
+.mission__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: rem(519);
+    overflow: hidden;
+    border-radius: rem(30);
+    padding: rem(86) rem(110);
+    background: red;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%;
+        height: 100%;
+        background: #6CEFD5;
+        opacity: .4;
+        mix-blend-mode: color;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: .6;
+    }
+
+    h2 {
+        @include font-fors-medium;
+        font-size: font(40);
+        line-height: rem(40);
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        color: color(common-3);
+        z-index: 1;
+    }
+
+    p {
+        @include font-fors-regular;
+        font-size: font(18);
+        line-height: rem(32);
+        max-width: rem(506);
+        margin-top: rem(24);
+        color: color(common-2);
+        z-index: 1;
+
+        span:not(:first-child) {
+            display: inline-block;
+            margin-top: rem(14);
+        }
+    }
+
+    video {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

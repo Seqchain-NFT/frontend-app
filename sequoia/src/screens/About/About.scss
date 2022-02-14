@@ -1,0 +1,50 @@
+@use '../../styles' as *;
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    padding: rem(60) rem(190);
+}
+
+.about__collection {
+    position: relative;
+
+    .nft-preview-blur {
+        position: absolute;
+        width: 200%;
+        height: auto;
+        top:50%; left: 60%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+
+    .nft-preview {
+        width: rem(505);
+        height: auto;
+    }
+}
+
+.about__text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: rem(80);
+
+    h3 {
+        @include font-fors-medium;
+        font-size: font(40);
+        line-height: rem(40);
+        letter-spacing: -0.01em;
+        color: color(common-3)
+    }
+
+    p {
+        @include font-fors-regular;
+        font-size: font(20);
+        line-height: rem(36);
+        color: color(common-2);
+        margin: rem(24) 0;
+        span:not(:first-child) { margin-top: rem(14); display: block; }
+    }
+}

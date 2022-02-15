@@ -7,6 +7,7 @@ import Mission from "./Mission/Mission";
 import Utility from "./Utility/Utility";
 import Roadmap from "./Roadmap/Roadmap";
 import FAQ from "./FAQ/FAQ";
+import Footer from "../../components/Footer/Footer";
 
 const Main = () => {
     return (
@@ -20,6 +21,8 @@ const Main = () => {
         <Utility/>
         <Roadmap/>
         <FAQ/>
+        <Join/>
+        <Footer/>
     </>
     )
 }

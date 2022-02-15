@@ -7,20 +7,6 @@
     justify-content: flex-start;
     align-items: center;
     padding: rem(120) rem(190);
-
-    &::before {
-        content: '';
-        position: absolute;
-        width: 100vw;
-        height: 400vw;
-        top: -120%; left: 50%;
-        transform: translateX(-50%);
-        background: url(./assets/blur.png);
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        z-index: -1;
-    }
 }
 
 .meet__header {

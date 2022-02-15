@@ -1,0 +1,27 @@
+@use '../../styles' as *;
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: rem(120) rem(190);
+
+    .copyright {
+        @include font-fors-regular;
+        font-size: font(15);
+        line-height: rem(32);
+        color: color(primary);
+        opacity: .6;
+    }
+
+    .message {
+        @include font-fors-regular;
+        font-size: font(12);
+        line-height: rem(17);
+        color: color(primary);
+        opacity: .4;
+        flex: 1;
+        margin-left: rem(86);
+    }
+}

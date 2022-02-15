@@ -11,7 +11,7 @@
     background-color: var(--accordion-background);
     border-radius: rem(20);
     box-shadow: var(--accordion-shadow);
-    transition: max-height var(--accordion-duration) ease, background-color var(--accordion-duration) ease, box-shadow var(--accordion-duration) ease;
+    transition: background-color var(--accordion-duration) ease, box-shadow var(--accordion-duration) ease;
     padding-left: rem(40);
     padding-top: rem(20);
     padding-bottom: rem(20);
@@ -44,7 +44,8 @@
     color: color(primary);
     overflow: hidden;
     max-height: 0;
-    transition: max-height var(--accordion-duration) ease;
+    margin-bottom: 0;
+    transition: max-height var(--accordion-duration) ease, margin-bottom var(--accordion-duration) ease;
 }
 
 .accordion.active {
@@ -61,5 +62,6 @@
 
     .accordion__body {
         max-height: rem(100);
+        margin-bottom: rem(16);
     }
 }

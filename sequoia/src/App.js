@@ -7,6 +7,7 @@ import Join from "./screens/Join/Join";
 import Meet from "./screens/Meet/Meet";
 import Mission from "./screens/Mission/Mission";
 import Utility from "./screens/Utility/Utility";
+import Roadmap from "./screens/Roadmap/Roadmap";
 
 import renderer from './utils/renderer'
 
@@ -26,6 +27,7 @@ const App = () => {
       <Meet/>
       <Mission/>
       <Utility/>
+      <Roadmap/>
     </div>
   );
 }

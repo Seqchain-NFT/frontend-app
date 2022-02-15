@@ -43,7 +43,7 @@ const Welcome = () => {
         canvas.context = canvas.dom.current.getContext('2d')
         setTimeout(function() {
             canvas.blurImages = generateBlursImages.apply(canvas, [ blur1, blur2, blur3, blur4 ])
-        }, 100)
+        }, 300)
         renderer.setToRender(canvasAnimation.bind(canvas), 'canvasAnimation')
 
         return () => {

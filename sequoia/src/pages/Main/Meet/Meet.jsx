@@ -16,7 +16,7 @@ import { ReactComponent as InfoIcon } from './assets/info.svg'
 
 import renderer from '../../../utils/renderer'
 
-import ReactTooltip from 'react-tooltip';
+import Tooltip, { meetTooltipContent, meetTooltipClass } from '../../../components/UI/Tooltip/Tooltip'
 
 const Meet = () => {
     const meetScreen = useRef()
@@ -61,7 +61,7 @@ const Meet = () => {
                     </div>
                     <div className="subtitle">
                         <div>15 SEQ/DAY</div>
-                        <InfoIcon/>
+                        <InfoIcon data-class={meetTooltipClass} data-html={true} data-tip={meetTooltipContent}/>
                     </div>
                     <p>The primitive structure of society, tribal symbols, and artifacts of the first people along with climate, weather conditions, and geography changes.</p>
                 </div>
@@ -82,7 +82,7 @@ const Meet = () => {
                     </div>
                     <div className="subtitle">
                         <div>25 SEQ/DAY</div>
-                        <InfoIcon/>
+                        <InfoIcon data-class={meetTooltipClass} data-html={true} data-tip={meetTooltipContent}/>
                     </div>
                     <p>The first echoes of civilization, artifacts of technological and industrial development. So here you can find easter eggs that will link to our next collections!</p>
                 </div>
@@ -103,7 +103,7 @@ const Meet = () => {
                     </div>
                     <div className="subtitle">
                         <div>35 SEQ/DAY</div>
-                        <InfoIcon/>
+                        <InfoIcon data-class={meetTooltipClass} data-html={true} data-tip={meetTooltipContent}/>
                     </div>
                     <p>This era, urbanization, and futurism. Mystical scenarios and unusual styles will pleasantly surprise you. For sure!</p>
                 </div>
@@ -123,7 +123,7 @@ const Meet = () => {
                     </div>
                     <div className="subtitle">
                         <div>50 SEQ/DAY</div>
-                        <InfoIcon/>
+                        <InfoIcon data-class={meetTooltipClass} data-html={true} data-tip={meetTooltipContent}/>
                     </div>
                     <p>The apogee of human development. Intergalactic journey with the spirit <br/>of the Sequoia Keeper. Sounds <br/>fantastical, right? </p>
                 </div>
@@ -134,6 +134,7 @@ const Meet = () => {
                     </div>
                 </div>
             </div>
+            <Tooltip/>
         </div>
     )
 }

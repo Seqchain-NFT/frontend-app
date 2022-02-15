@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.scss'
 
-import { ReactComponent as Logo } from '../../assets/svg/seqlogo.svg'
+import { ReactComponent as Logo } from './assets/logo.svg'
 import { ButtonOutlinePrimary, ButtonOutlineAccent } from '../UI/Button/Button'
 
 const Header = () => {

@@ -1,0 +1,22 @@
+@use '../../../styles' as *;
+
+.FAQ {
+    padding: rem(120) rem(190);
+
+    h2 {
+        @include font-fors-medium;
+        font-size: font(40);
+        line-height: rem(40);
+        letter-spacing: -0.01em;
+        color: color(common-3);
+    }
+}
+
+.FAQ__list {
+    margin-top: rem(40);
+    width: 100%;
+
+    .accordion:not(:first-child) {
+        margin-top: rem(8);
+    }
+}

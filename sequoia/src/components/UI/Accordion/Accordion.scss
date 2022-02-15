@@ -1,0 +1,65 @@
+@use '../../../styles' as *;
+
+.accordion {
+    --accordion-background: rgba(44, 38, 42, 0.4);
+    --accordion-background-active: #55453D;
+    --accordion-shadow: 0px rem(24) rem(56) rgba(0, 0, 0, 0.32);
+    --accordion-shadow-active: 0px rem(24) rem(56) rgba(0, 0, 0, 0.32), inset 2px -2px 2px rgba(165, 133, 145, 0.12), inset -2px 2px 2px rgba(255, 255, 255, 0.12);
+    --accordion-duration: .5s;
+
+    width: 100%;
+    background-color: var(--accordion-background);
+    border-radius: rem(20);
+    box-shadow: var(--accordion-shadow);
+    transition: max-height var(--accordion-duration) ease, background-color var(--accordion-duration) ease, box-shadow var(--accordion-duration) ease;
+    padding-left: rem(40);
+    padding-top: rem(20);
+    padding-bottom: rem(20);
+    padding-right: rem(20);
+    cursor: pointer;
+}
+
+.accordion__title {
+    @include font-fors-regular;
+    font-size: font(24);
+    line-height: rem(32);
+    color: color(primary);
+    opacity: 0.8;
+    transition: opacity var(--accordion-duration) ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+        width: rem(56);
+        height: rem(56);
+        transition: transform var(--accordion-duration) ease;
+    }
+}
+
+.accordion__body {
+    @include font-fors-regular;
+    font-size: font(20);
+    line-height: rem(36);
+    color: color(primary);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height var(--accordion-duration) ease;
+}
+
+.accordion.active {
+    background-color: var(--accordion-background-active);
+    box-shadow: var(--accordion-shadow-active);
+
+    .accordion__title {
+        opacity: 1;
+    }
+
+    svg {
+        transform: rotate(-180deg);
+    }
+
+    .accordion__body {
+        max-height: rem(100);
+    }
+}

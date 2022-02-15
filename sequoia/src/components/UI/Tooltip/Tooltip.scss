@@ -5,7 +5,7 @@
     background: color(primary) !important;
     box-shadow: 0px 31px 80px rgba(0, 0, 0, 0.0325), 0px 15.6938px 34.875px rgba(0, 0, 0, 0.05), 0px 6.2px 13px rgba(0, 0, 0, 0.0675), 0px 1.35625px 4.625px rgba(0, 0, 0, 0.1) !important;
     padding: rem(32) !important;
-    border-radius: rem(20);
+    border-radius: rem(20) !important;
 
     &.place-top {
         &::after {
@@ -20,21 +20,19 @@
     }
 
     .title {
-        font-family: "TT Fors";
-        font-weight: 400;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
+        @include font-fors-medium;
+        font-size: font(24);
+        line-height: rem(24);
         letter-spacing: -0.01em;
-        color: #000000;
+        color: color(darkest);
         text-transform: uppercase;
     }
 
     p {
-        font-family: "TT Fors";
-        font-weight: 400;
+        @include font-fors-medium;
         color: rgba(42, 42, 42, 0.8);
-        margin-top: 0.75rem;
-        font-size: 1rem;
-        line-height: 1.5rem;
+        margin-top: rem(14);
+        font-size: font(16);
+        line-height: rem(24);
     }
 }

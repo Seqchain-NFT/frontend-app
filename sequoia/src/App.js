@@ -6,13 +6,12 @@ import About from "./screens/About/About";
 import Join from "./screens/Join/Join";
 import Meet from "./screens/Meet/Meet";
 import Mission from "./screens/Mission/Mission";
-
+import Utility from "./screens/Utility/Utility";
 
 import renderer from './utils/renderer'
 
 
 const App = () => {
-
   useEffect(() => {
     renderer.render()
     renderer.useMouseEvent()
@@ -26,6 +25,7 @@ const App = () => {
       <Join/>
       <Meet/>
       <Mission/>
+      <Utility/>
     </div>
   );
 }

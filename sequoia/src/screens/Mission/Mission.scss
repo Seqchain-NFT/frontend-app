@@ -1,7 +1,7 @@
 @use '../../styles' as *;
 
 .mission {
-    padding: rem(120) rem(190);
+    padding: rem(120) rem(80);
     margin-top: rem(300);
 }
 
@@ -16,7 +16,6 @@
     overflow: hidden;
     border-radius: rem(30);
     padding: rem(86) rem(110);
-    background: red;
 
     &::before {
         content: '';
@@ -68,7 +67,7 @@
         position: absolute;
         width: 100%;
         height: auto;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
+        top: 0%; left: 0%;
+        transition: transform .15s;
     }
 }

@@ -2,20 +2,28 @@ import { useRef, useEffect } from 'react'
 
 import './Mission.scss'
 
+import forestVideo from './assets/forest.mp4'
+
 import renderer from '../../utils/renderer'
 
 const Mission = () => {
     const video = useRef()
+    const mission = useRef()
+
     useEffect(() => {
-        renderer.setToRender(missionMouseParallax.bind(undefined, video), 'missionMouseParallax')
-        return () => renderer.removeFromRender('missionMouseParallax')
+        renderer.setToRender(missionMouseParallax.bind(undefined, video, mission), 'missionMouseParallax')
+        renderer.setToRender(missionScrollParallax.bind(undefined, mission), 'missionScrollParallax')
+        return () => {
+            renderer.removeFromRender('missionMouseParallax')
+            renderer.removeFromRender('missionScrollParallax')
+        }
     }, [])
 
     return (
-        <div className="mission">
+        <div ref={mission} className="mission">
             <div className="mission__card">
-                <video ref={video} autoPlay muted playsInline poster="">
-                    <source src='' />
+                <video ref={video} autoPlay muted="muted" playsInline loop poster="">
+                    <source src={forestVideo} type="video/mp4" />
                 </video>
                 <h2>Our mission</h2>
                 <p>
@@ -27,11 +35,18 @@ const Mission = () => {
     )
 }
 
-function missionMouseParallax(video) {
-    if (renderer.isElementVisible(video.current)) {
+function missionMouseParallax(video, mission) {
+    if (renderer.isElementFullyVisible(mission.current)) {
         const mouseX = (renderer.getMouseWindowCoords().x / window.innerWidth) * 2 - 1;
         const mouseY = -(renderer.getMouseWindowCoords().y / window.innerHeight) * 2 + 1;
-        video.current.style.transform = `translate3d(${mouseX * 100}px, ${mouseY * 100}px, 0)`
+        video.current.style.transform = `translate3d(${- mouseX * 30}px, ${mouseY * 30}px, 0) scale(1.15)`
+    }
+}
+
+function missionScrollParallax(mission) {
+    if (renderer.isElementVisible(mission.current)) {
+        const translateY = renderer.getScrollCoordsFromElement(mission.current).windowBottom.fromBottom
+        mission.current.style.transform = `translate3d(0, ${translateY / 5}px, 0)`
     }
 }
 

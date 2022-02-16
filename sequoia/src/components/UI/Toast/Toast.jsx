@@ -20,6 +20,7 @@ const SuccessMessage = ({ closeToast, toastProps }) => (
 const toastSuccess = () => toast.success(<SuccessMessage/>, {
     icon: ({theme, type}) => <div className="toast-icon"><SuccessIcon/></div> ,
     className: 'toast-success-wrapper',
+    bodyClassName: "toast-success-body",
     progressClassName: 'toast-success-progress-bar'
 })
 

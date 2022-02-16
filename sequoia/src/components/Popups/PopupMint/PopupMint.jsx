@@ -10,6 +10,8 @@ import { ReactComponent as PlusIcon } from './assets/plus.svg'
 
 import { PopupContext } from '../../../context/PopupContext'
 
+import { toast } from 'react-toastify';
+
 
 const PopupMint = (props) => {
     const MAXT_TO_MINT = 3
@@ -18,6 +20,8 @@ const PopupMint = (props) => {
     const [ mintCount, setMintCount ] = useState(1)
 
     const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
+
+    const success = () => toast('Success!')
 
     useEffect(() => {
         if (showPopupName === 'popup-mint') {
@@ -52,7 +56,7 @@ const PopupMint = (props) => {
                 </div>
                 <div className="popup-mint__footer">
                     <p>Total: <span>{ mintCount }</span> BNB</p>
-                    <ButtonAccent>Buy</ButtonAccent>
+                    <ButtonAccent onClick={success}>Buy</ButtonAccent>
                 </div>
             </div>
             <div onClick={() => setShowPopupName('')} className="popup__blur"></div>

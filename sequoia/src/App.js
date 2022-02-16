@@ -9,6 +9,9 @@ import Account from "./pages/Account/Account";
 
 import Popups from "./components/Popups/Popups";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import renderer from './utils/renderer'
 
 
@@ -27,6 +30,7 @@ const App = () => {
             <Route path="profile" element={ <Account/> } />
           </Routes>
           <Popups/>
+          <ToastContainer/>
         </div>
       </PopupContextProvider>
     </Web3ContextProvider>

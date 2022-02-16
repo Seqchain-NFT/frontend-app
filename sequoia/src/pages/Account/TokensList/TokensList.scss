@@ -5,6 +5,11 @@
     min-height: 65vh;
     padding: 0 rem(190);
     padding-top: rem(156);
+
+    @media screen and (max-width: point(md)) {
+        padding: 0 rem(24);
+        padding-top: rem(156);
+    }
 }
 
 .tokens-list__header {
@@ -26,6 +31,9 @@
         line-height: rem(56);
         color: color(primary);
         margin-top: rem(12);
+        @media screen and (max-width: point(sm)) {
+            line-height: rem(40);
+        }
     }
 }
 
@@ -35,8 +43,12 @@
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    align-items: center;
+    align-items: flex-start;
     color: color(primary);
+
+    @media screen and (max-width: point(sm)) {
+        overflow-x: scroll;
+    }
 
     .token {
         display: flex;
@@ -46,6 +58,9 @@
         padding: rem(20) rem(48);
         border-radius: rem(10);
         background: #2B2729;
+        @media screen and (max-width: point(sm)) {
+            width: 200%;
+        }
 
         &:not(:first-child) {
             margin-top: 4px;

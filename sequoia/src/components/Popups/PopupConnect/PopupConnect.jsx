@@ -16,7 +16,6 @@ const PopupConnect = (props) => {
     const [isAuthorised, setIsAuthorised] = React.useContext(Web3Context)
 
     useEffect(() => {
-        console.log(showPopupName)
         if (showPopupName === 'popup-connect') {
             setShowModal(true)
         } else

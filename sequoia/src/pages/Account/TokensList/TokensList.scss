@@ -1,0 +1,132 @@
+@use "../../../styles" as *;
+
+.tokens-list {
+    width: 100%;
+    min-height: 65vh;
+    padding: 0 rem(190);
+    padding-top: rem(156);
+}
+
+.tokens-list__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    h1 {
+        @include font-fors-medium;
+        font-size: font(16);
+        text-transform: uppercase;
+        color: color(common-3);
+    }
+
+    h2 {
+        @include font-fors-medium;
+        font-size: font(40);
+        letter-spacing: -0.02em;
+        line-height: rem(56);
+        color: color(primary);
+        margin-top: rem(12);
+    }
+}
+
+.tokens-list__tokens {
+    margin-top: rem(32);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    color: color(primary);
+
+    .token {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        padding: rem(20) rem(48);
+        border-radius: rem(10);
+        background: #2B2729;
+
+        &:not(:first-child) {
+            margin-top: 4px;
+        }
+    }
+
+    img {
+        height: 100%;
+        width: auto;
+        filter: drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.25));
+    }
+
+    .subtitle {
+        @include font-fors-demibold;
+        font-size: font(12);
+        line-height: rem(15);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .generate, .claim {
+        @include font-fors-medium;
+        font-size: font(24);
+        line-height: rem(24);
+        letter-spacing: 0.05em;
+        margin-top: 2px;
+    }
+}
+
+.token__number {
+    @include font-fors-regular;
+    font-size: font(16);
+    letter-spacing: 0.04em;
+    color: color(primary);
+    opacity: .5;
+    width: rem(50);
+    margin-right: rem(24);
+}
+
+.token__rarity {
+    margin-left: rem(32);
+
+    .subtitle {
+        margin-top: rem(20);
+    }
+}
+
+.token__claim {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.tokens-list__tokens {
+    --color-que-gray: #383436;
+    .token.que {
+        background: linear-gradient(180deg, #211E20 0%, rgba(33, 30, 32, 0) 100%);
+
+        .rarity-label {
+            background: var(--color-que-gray);
+            width: rem(104);
+            height: rem(21);
+        }
+
+        .token__rarity {
+            .subtitle {
+                background: var(--color-que-gray);
+                width: rem(90);
+                height: rem(11);
+                border-radius: 4px;
+            }
+            .generate {
+                background: var(--color-que-gray);
+                width: rem(151);
+                height: rem(23);
+                border-radius: 4px;
+                margin-top: rem(7);
+            }
+        }
+    }
+}

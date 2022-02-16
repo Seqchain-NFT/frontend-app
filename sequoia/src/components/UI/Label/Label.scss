@@ -1,0 +1,13 @@
+@use "../../../styles" as *;
+
+.rarity-label {
+    @include font-fors-demibold;
+    font-size: font(12);
+    line-height: rem(15);
+    border-radius: rem(6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color(primary);
+    padding: rem(6) rem(20);
+    text-align: center;
+}

@@ -13,26 +13,35 @@ import { ButtonOutlinePrimary, ButtonOutlineAccent, ButtonEmpty } from '../UI/Bu
 import { PopupContext } from '../../context/PopupContext'
 import { Web3Context } from '../../context/Web3Context'
 
-const Header = () => {
-    const [showPopupName, setShowPopupName] = React.useContext(PopupContext); 
+const Header = (props) => {
+    const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
     const [isAuthorised, setIsAuthorised] = React.useContext(Web3Context)
+
+    const NavigateButton = () => {
+        if (window.location.pathname === '/profile') {
+            return <Link to="/"><ButtonOutlinePrimary>Main</ButtonOutlinePrimary></Link>
+        }
+        return <Link to="profile"><ButtonOutlinePrimary><UserIcon/>Profile</ButtonOutlinePrimary></Link>
+    }
 
     const Buttons = () => {
         if (isAuthorised) {
             return (
                 <div className="buttons">
                     <ButtonOutlinePrimary onClick={() => setShowPopupName('popup-mint')}>Mint</ButtonOutlinePrimary>
-                    <Link to="profile"><ButtonOutlinePrimary><UserIcon/>Profile</ButtonOutlinePrimary></Link>
-                    <ButtonEmpty onClick={() => setIsAuthorised(false)}><ExitIcon/></ButtonEmpty>
+                    <NavigateButton/>
+                    <Link to="/"><ButtonEmpty onClick={() => setIsAuthorised(false)}><ExitIcon/></ButtonEmpty></Link>
                 </div>
             )
         }
         return <ButtonOutlineAccent onClick={() => setShowPopupName('popup-connect')}>Connect Wallet</ButtonOutlineAccent>
     }
 
-    return (
-        <header>
-            <a className="logo" href="#"><Logo/></a>
+    const Nav = () => {
+        if (window.location.pathname === '/profile') {
+            return <nav></nav>
+        }
+        return (
             <nav>
                 <a href="#about" data-text="about"><span>about</span></a>
                 <a href="#generation" data-text="alpha generation"><span>alpha generation</span></a>
@@ -41,6 +50,13 @@ const Header = () => {
                 <a href="#Roadmap" data-text="Roadmap"><span>Roadmap</span></a>
                 <a href="#FAQ" data-text="FAQ"><span>FAQ</span></a>
             </nav>
+        )
+    }
+
+    return (
+        <header>
+            <Link className="logo" to="/"><Logo/></Link>
+            <Nav/>
             <Buttons/>
         </header>
     )

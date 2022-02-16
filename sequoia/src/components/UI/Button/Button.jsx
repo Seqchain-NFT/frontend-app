@@ -7,27 +7,27 @@ const ButtonOutlinePrimary = ({ children, onClick }) => {
     )
 }
 
-const ButtonOutlineAccent = ({ children }) => {
+const ButtonOutlineAccent = ({ children, onClick }) => {
     return (
-        <button type='button' className='button button-outline-accent'>{ children }</button>
+        <button onClick={onClick} type='button' className='button button-outline-accent'>{ children }</button>
     )
 }
 
-const ButtonAccent = ({ children }) => {
+const ButtonAccent = ({ children, onClick }) => {
     return (
-        <button type='button' className='button button-accent'>{ children }</button>
+        <button onClick={onClick} type='button' className='button button-accent'>{ children }</button>
     )
 }
 
-const ButtonSecondary = ({ children }) => {
+const ButtonSecondary = ({ children, onClick }) => {
     return (
-        <button type='button' className='button button-secondary'>{ children }</button>
+        <button onClick={onClick} type='button' className='button button-secondary'>{ children }</button>
     )
 }
 
-const ButtonEmpty = ({ children }) => {
+const ButtonEmpty = ({ children, onClick }) => {
     return (
-        <button type='button' className='button-empty'>{ children }</button>
+        <button onClick={onClick} type='button' className='button-empty'>{ children }</button>
     )
 }
 

@@ -1,0 +1,36 @@
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease, visibility .5s ease;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.popup__blur {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.95);
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    z-index: -1;
+}
+
+
+.popuped {
+    scrollbar-color: color('black') color('black');
+    ::-webkit-scrollbar-track {
+      background-color: color('black')
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: color('black')
+    }
+}

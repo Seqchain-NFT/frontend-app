@@ -1,0 +1,82 @@
+@use '../../../styles' as *;
+
+.popup-connect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+        @include font-fors-medium;
+        font-size: font(24);
+        line-height: rem(40);
+        letter-spacing: -0.01em;
+        color: color(common-3);
+        text-transform: uppercase;
+    }
+}
+
+.popup-connect__wallets-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: rem(16);
+    width: auto;
+
+    @media screen and (max-width: point(md)) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: point(sm)) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.popup-connect__wallet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: rem(229);
+    height: rem(232);
+    background-color: rgba(43, 39, 41, 0.4);
+    border-radius: rem(12);
+    box-sizing: content-box;
+    padding: rem(16);
+    cursor: pointer;
+    transition: background-color .1s ease;
+    &:not(:first-child) { margin-left: 2px; }
+    @media screen and (max-width: point(md)) {
+        margin-top: 2px;
+    }
+    @media screen and (max-width: point(sm)) {
+        height: auto;
+    }
+
+    svg {
+        width: rem(100);
+        height: rem(100);
+        @media screen and (max-width: point(sm)) {
+            width: rem(50);
+            height: rem(50);
+        }
+    }
+
+    p {
+        @include font-fors-regular;
+        font-size: font(20);
+        color: color(primary);
+        margin-top: rem(12);
+        opacity: .8;
+        @media screen and (max-width: point(sm)) {
+            margin-top: 0;
+            font-size: font(16);
+        }
+    }
+}
+
+.popup-connect__wallet:hover {
+    background-color: rgba(43, 39, 41, 0.8);
+}

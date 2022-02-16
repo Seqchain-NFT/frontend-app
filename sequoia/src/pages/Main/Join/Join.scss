@@ -7,6 +7,13 @@
     justify-content: space-between;
     align-items: center;
     padding: rem(120) rem(190);
+    @media screen and (max-width: point(md)) {
+        margin-top: rem(136);
+        padding: rem(120) rem(140);
+    }
+    @media screen and (max-width: point(sm)) {
+        padding: rem(120) rem(24);
+    }
 
     &::before {
         content: '';
@@ -20,6 +27,16 @@
         background-position: center center;
         background-repeat: no-repeat;
         z-index: -1;
+
+        @media screen and (max-width: point(md)) {
+            width: 300%;
+            height: 500vw;
+            bottom: -800%;
+        }
+
+        @media screen and (max-width: point(sm)) {
+            bottom: -300%;
+        }
     }
 
     h2 {
@@ -36,9 +53,21 @@
             display: inline-block;
             animation: skew 1s infinite cubic-bezier(.89,0,.1,1);
         }
+
+        @media screen and (max-width: point(md)) {
+            position: absolute;
+            top: rem(-48);
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+
+        @media screen and (max-width: point(sm)) {
+            top: rem(-24);
+        }
     }
 
-    a { transition: .3s ease-in-out; }
+    a { display: block; transition: .3s ease-in-out; }
     a:hover { transform: translate3d(0, - rem(8), 0); }
     a:hover::before { opacity: .8; }
 }
@@ -48,12 +77,20 @@
     width: rem(80);
     height: rem(80);
 
+    @media screen and (max-width: point(md)) {
+        width: rem(50);
+        height: rem(50);
+    }
+
     img {
         position: absolute;
         top: 71%; left: 50%;
         transform: translate(-50%, -50%);
         width: rem(120);
         height: auto;
+        @media screen and (max-width: point(md)) {
+            width: rem(80);
+        }
     }
 
     &::before {
@@ -67,6 +104,9 @@
         background-repeat: no-repeat;
         opacity: .2;
         transition: opacity .3s;
+        @media screen and (max-width: point(md)) {
+            display: none;
+        }
     }
 }
 .join__telegram::before {
@@ -84,12 +124,20 @@
     width: rem(120);
     height: rem(120);
 
+    @media screen and (max-width: point(md)) {
+        width: rem(80);
+        height: rem(80);
+    }
+
     img {
         position: absolute;
         top: 67%; left: 50%;
         transform: translate(-50%, -50%);
         width: rem(180);
         height: auto;
+        @media screen and (max-width: point(md)) {
+            width: rem(120);
+        }
     }
 
     &::before {
@@ -103,6 +151,9 @@
         background-repeat: no-repeat;
         opacity: .2;
         transition: opacity .3s;
+        @media screen and (max-width: point(md)) {
+            display: none;
+        }
     }
 }
 .join__twitter::before {

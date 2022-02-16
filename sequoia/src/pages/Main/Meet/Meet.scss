@@ -7,6 +7,10 @@
     justify-content: flex-start;
     align-items: center;
     padding: rem(120) rem(190);
+
+    @media screen and (max-width: point(md)) {
+        padding: 0 rem(24);
+    }
 }
 
 .meet__header {
@@ -14,7 +18,20 @@
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: point(md)) {
+        flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: point(sm)) {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+
     .meet__header-title {
+        @media screen and (max-width: point(md)) {
+            width: 100%;
+        }
         h2 {
             @include font-fors-medium;
             font-size: font(40);
@@ -26,6 +43,9 @@
             width: rem(284);
             height: auto;
             margin-top: rem(22);
+        }
+        @media screen and (max-width: point(md)) {
+            margin-bottom: rem(32);
         }
     }
 
@@ -41,6 +61,40 @@
         letter-spacing: -0.01em;
         line-height: rem(30);
         margin-left: rem(48);
+        @media screen and (max-width: point(md)) {
+            margin: 0;
+        }
+        @media screen and (max-width: point(sm)) {
+            &:last-child { margin-top: rem(24); }
+        }
+    }
+}
+
+.meet__nft-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (max-width: point(md)) {
+        max-width: calc(100% + rem(24) * 2);
+        width: calc(100% + rem(24) * 2);
+        overflow-x: scroll;
+        flex-direction: row;
+        height: 100vh;
+        margin-top: rem(-64);
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+      
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+      
+    &::-webkit-scrollbar-track {
+        display: none;
     }
 }
 
@@ -72,6 +126,24 @@
     &.visible {
         width: 100%;
     }
+
+    @media screen and (max-width: point(md)) {
+        height: rem(533);
+        width: 80%;
+        min-width: 80%;
+        border-radius: rem(20);
+        flex-direction: column-reverse !important;
+        justify-content: flex-end;
+        padding: rem(44) rem(32);
+        margin-top: 0 !important;
+
+        &.common {
+            margin-left: rem(24);
+        }
+        &.rare, &.epic {
+            margin-left: rem(12);
+        }
+    }
 }
 
 .nft-card__description {
@@ -79,6 +151,11 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    @media screen and (max-width: point(md)) {
+        width: 100%;
+        height: 70%;
+        margin-top: auto;
+    }
 
     .title {
         display: flex;
@@ -89,6 +166,9 @@
             font-size: font(56);
             line-height: rem(72);
             letter-spacing: -0.02em;
+            @media screen and (max-width: point(md)) {
+                font-size: font(40);
+            }
         }
         .title__icon {
             position: relative;
@@ -120,6 +200,9 @@
         line-height: rem(24);
         letter-spacing: -0.01em;
         margin-top: rem(8);
+        @media screen and (max-width: point(md)) {
+            margin-top: rem(-8);
+        }
         svg { 
             cursor: pointer; 
             margin-bottom: -3px; 
@@ -137,6 +220,11 @@
         letter-spacing: -0.01em;
         margin-top: rem(32);
         width: rem(394);
+        @media screen and (max-width: point(md)) {
+            font-size: font(16);
+            margin-top: rem(24);
+            width: 100%;
+        }
     }
 }
 
@@ -144,6 +232,9 @@
     position: relative;
     flex: 1;
     height: 100%;
+    @media screen and (max-width: point(md)) {
+        width: 100%;
+    }
 
     img {
         position: absolute;
@@ -151,6 +242,17 @@
         top: -20%; left: 5%;
 
         &.sky { top: 40%; left: 60%; transform: translate(-50%, -50%); }
+        @media screen and (max-width: point(md)) {
+            width: rem(450);
+            left: auto;
+            right: -10%;
+            &.sky { top: 60%; left: 70%; }
+        }
+        @media screen and (max-width: point(sm)) {
+            width: rem(300);
+            left: -8%;
+            &.sky { top: 40%; left: 50%; }
+        }
     }
 }
 @keyframes translate {
@@ -166,11 +268,18 @@
 }
 
 .meet__nft-card.rare .nft-card__image img.nft { left: auto; right: 10%; }
-.meet__nft-card.rare .nft-card__image img.sky { left: auto; left: 50%; }
+.meet__nft-card.rare .nft-card__image img.sky { left: 50%; }
+@media screen and (max-width: point(md)) {
+    .meet__nft-card.rare .nft-card__image img.nft { top: -35%; right: -9%; }
+    .meet__nft-card.rare .nft-card__image img.sky { left: 55%; }
+}
 
 .meet__nft-card.common .nft-card__image img.nft { animation: 10s translate infinite ease; }
 .meet__nft-card.rare .nft-card__image img.nft { animation: 10s translate 3s infinite ease; }
 .meet__nft-card.epic .nft-card__image img.nft { animation: 10s translate 6s infinite ease; }
+@media screen and (max-width: point(md)) {
+    .meet__nft-card.epic .nft-card__image img.nft { top: -45%; }
+}
 
 .meet__nft {
     position: relative;
@@ -181,6 +290,32 @@
     width: 100%;
     margin-top: rem(200);
     color: color(primary);
+    @media screen and (max-width: point(md)) {
+        margin: 0;
+        margin-left: rem(24);
+        flex-direction: column;
+        height: rem(533);
+        width: 80%;
+        min-width: 80%;
+
+        .nft-card__description {
+            margin-top: 0;
+            margin-bottom: auto;
+            height: 50%;
+        }
+    }
+    @media screen and (max-width: point(sm)) {
+        margin: 0;
+        margin-left: rem(24);
+        flex-direction: column;
+        height: rem(533);
+
+        .nft-card__description {
+            margin-top: 0;
+            margin-bottom: auto;
+            height: 50%;
+        }
+    }
 
     &::after {
         content: '';
@@ -195,6 +330,9 @@
         background-repeat: no-repeat;
         z-index: -1;
         animation: 5s scale ease infinite;
+        @media screen and (max-width: point(md)) {
+            display: none;
+        }
     }
 
     .nft-card__image {
@@ -210,6 +348,33 @@
             width: 180%;
             left: 50%;
             top: rem(110);
+        }
+
+        @media screen and (max-width: point(md)) {
+            img {
+                width: 50%;
+                top: 45%;
+                left: 18%;
+                z-index: -1;
+            }
+            img.platform {
+                width: 80%;
+                left: 34%;
+                top: 45%;
+            }
+        }
+        @media screen and (max-width: point(sm)) {
+            img {
+                width: 100%;
+                top: 50%;
+                left: 30%;
+                z-index: -1;
+            }
+            img.platform {
+                width: 130%;
+                left: 50%;
+                top: 50%;
+            }
         }
     }
 }

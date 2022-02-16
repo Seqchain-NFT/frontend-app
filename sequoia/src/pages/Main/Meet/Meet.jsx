@@ -17,6 +17,9 @@ import { ReactComponent as InfoIcon } from './assets/info.svg'
 import renderer from '../../../utils/renderer'
 
 import Tooltip, { meetTooltipContent, meetTooltipClass } from '../../../components/UI/Tooltip/Tooltip'
+import { LAPTOP_BREAKPOINT } from '../../../utils/constants'
+
+
 
 const Meet = () => {
     const meetScreen = useRef()
@@ -26,9 +29,10 @@ const Meet = () => {
 
     const nftLegend = useRef()
 
+
     useEffect(() => {
-        renderer.setToRender(cardAnimation.bind(undefined, meetScreen, [commonCard, rareCard, epicCard]), 'cardAnimation')
-        renderer.setToRender(meetMouseParallax.bind(undefined, meetScreen, nftLegend), 'meetMouseParallax')
+        renderer.setToRender(cardAnimation.bind(undefined, meetScreen, LAPTOP_BREAKPOINT, [commonCard, rareCard, epicCard]), 'cardAnimation')
+        renderer.setToRender(meetMouseParallax.bind(undefined, meetScreen, nftLegend, LAPTOP_BREAKPOINT), 'meetMouseParallax')
         return () => {
             renderer.removeFromRender('cardAnimation')
             renderer.removeFromRender('meetMouseParallax')
@@ -50,6 +54,7 @@ const Meet = () => {
                 </div>
             </div>
 
+            <div className="meet__nft-list">
             <div ref={commonCard} className="meet__nft-card common">
                 <div className="nft-card__description">
                     <div className="title">
@@ -134,13 +139,14 @@ const Meet = () => {
                     </div>
                 </div>
             </div>
+            </div>
             <Tooltip/>
         </div>
     )
 }
 
-function cardAnimation(meet, cards) {
-    if (renderer.isElementVisible(meet.current)) {
+function cardAnimation(meet, breakpoint, cards) {
+    if (renderer.isElementVisible(meet.current) && window.innerWidth > breakpoint) {
         cards.forEach(card => {
             if (renderer.isElementVisible(card.current)) { card.current.classList.add('visible') }
         })
@@ -149,8 +155,8 @@ function cardAnimation(meet, cards) {
     })}
 }
 
-function meetMouseParallax(meet, legendaryNft) {
-    if (renderer.isElementVisible(meet.current)) {
+function meetMouseParallax(meet, legendaryNft, breakpoint) {
+    if (renderer.isElementVisible(meet.current) && window.innerWidth > breakpoint) {
         const mouse = renderer.getMouseWindowCoords()
         legendaryNft.current.style.transform = `translate3d(${mouse.x / 200}px, ${mouse.y / 200}px, 0)`
     }

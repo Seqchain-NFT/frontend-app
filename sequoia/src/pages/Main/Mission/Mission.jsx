@@ -5,13 +5,14 @@ import './Mission.scss'
 import forestVideo from './assets/forest.mp4'
 
 import renderer from '../../../utils/renderer'
+import { LAPTOP_BREAKPOINT } from '../../../utils/constants'
 
 const Mission = () => {
     const video = useRef()
     const mission = useRef()
 
     useEffect(() => {
-        renderer.setToRender(missionMouseParallax.bind(undefined, video, mission), 'missionMouseParallax')
+        renderer.setToRender(missionMouseParallax.bind(undefined, video, mission, LAPTOP_BREAKPOINT), 'missionMouseParallax')
         return () => {
             renderer.removeFromRender('missionMouseParallax')
         }
@@ -33,8 +34,8 @@ const Mission = () => {
     )
 }
 
-function missionMouseParallax(video, mission) {
-    if (renderer.isElementVisible(mission.current)) {
+function missionMouseParallax(video, mission, LAPTOP_BREAKPOINT) {
+    if (renderer.isElementVisible(mission.current) && window.innerWidth > LAPTOP_BREAKPOINT) {
         const mouseX = (renderer.getMouseWindowCoords().x / window.innerWidth) * 2 - 1;
         const mouseY = -(renderer.getMouseWindowCoords().y / window.innerHeight) * 2 + 1;
         video.current.style.transform = `translate3d(${- mouseX * 30}px, ${mouseY * 30}px, 0) scale(1.15)`

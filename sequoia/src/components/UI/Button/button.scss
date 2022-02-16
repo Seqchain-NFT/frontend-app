@@ -18,7 +18,7 @@
     cursor: pointer;
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     svg { width: rem(24); height: rem(18); margin-right: rem(8); }
     svg path { transition: fill .3s, stroke .3s; }
@@ -47,6 +47,10 @@
         &:hover { background-color: rgba($color, 20%); }
         &:active { background-color: color($name); color: color(dark); }
         &:active > svg > path { fill: color(dark); }
+
+        @media screen and (max-width: point(md)) {
+            padding: rem(12) rem(35);
+        }
     }
 }
 

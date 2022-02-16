@@ -3,6 +3,11 @@
 .mission {
     padding: rem(120) rem(80);
     margin-top: rem(300);
+
+    @media screen and (max-width: point(md)) {
+        padding: 0;
+        margin-top: 0;
+    }
 }
 
 .mission__card {
@@ -16,6 +21,12 @@
     overflow: hidden;
     border-radius: rem(30);
     padding: rem(86) rem(110);
+
+    @media screen and (max-width: point(md)) {
+        padding: rem(96) rem(24);
+        border-radius: 0;
+        height: auto;
+    }
 
     &::before {
         content: '';
@@ -69,5 +80,10 @@
         height: auto;
         top: 0%; left: 0%;
         transition: transform .15s;
+
+        @media screen and (max-width: point(md)) {
+            height: 100%;
+            width: auto;
+        }
     }
 }

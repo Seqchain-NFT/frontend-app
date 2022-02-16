@@ -1,9 +1,9 @@
 import React from 'react'
 import './Button.scss'
 
-const ButtonOutlinePrimary = ({ children }) => {
+const ButtonOutlinePrimary = ({ children, onClick }) => {
     return (
-        <button type='button' className='button button-outline-primary'>{ children }</button>
+        <button onClick={onClick} type='button' className='button button-outline-primary'>{ children }</button>
     )
 }
 

@@ -4,6 +4,13 @@
     display: flex;
     justify-content: space-between;
     padding: rem(120) rem(190);
+
+    @media screen and (max-width: point(md)) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: rem(0) rem(24);
+    }
 }
 
 .about__collection {
@@ -22,6 +29,11 @@
         width: rem(505);
         height: auto;
         margin-bottom: -10%;
+
+        @media screen and (max-width: point(md)) {
+            width: 100%;
+            margin-bottom: -20%;
+        }
     }
 }
 
@@ -32,13 +44,21 @@
     align-items: flex-start;
     margin-left: rem(80);
     position: relative;
+    @media screen and (max-width: point(md)) {
+        margin-left: 0;
+        align-items: center;
+    }
 
     h2 {
         @include font-fors-medium;
         font-size: font(40);
         line-height: rem(40);
         letter-spacing: -0.01em;
-        color: color(common-3)
+        color: color(common-3);
+        text-transform: uppercase;
+        @media screen and (max-width: point(md)) {
+            text-align: center;
+        }
     }
 
     p {
@@ -48,6 +68,9 @@
         color: color(common-2);
         margin: rem(24) 0;
         span:not(:first-child) { margin-top: rem(14); display: block; }
+        @media screen and (max-width: point(md)) {
+            text-align: center;
+        }
     }
 
     &::before {

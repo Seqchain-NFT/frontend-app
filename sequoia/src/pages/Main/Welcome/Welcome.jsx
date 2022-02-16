@@ -17,6 +17,8 @@ import { ReactComponent as DiscordIcon } from './assets/discord.svg'
 import { ButtonAccent, ButtonSecondary } from '../../../components/UI/Button/Button'
 
 import renderer from '../../../utils/renderer'
+import { LAPTOP_BREAKPOINT } from '../../../utils/constants'
+
 
 const Welcome = () => {
     const ground = useRef()
@@ -33,12 +35,13 @@ const Welcome = () => {
         blursCount: 60,
         blurImages: [],
         mouseRadius: 250,
-        ground
+        ground,
+        breakpoint: LAPTOP_BREAKPOINT,
     }
 
     useEffect(() => {
         renderer.setToRender(groundParallax.bind(undefined, ground.current, canvas.dom.current), 'groundParallax')
-        renderer.setToRender(welcomeMouseParallax.bind(undefined, ground.current, parallaxElements), 'welcomeMouseParallax')
+        renderer.setToRender(welcomeMouseParallax.bind(undefined, ground.current, parallaxElements, canvas.breakpoint), 'welcomeMouseParallax')
 
         canvas.context = canvas.dom.current.getContext('2d')
         setTimeout(function() {
@@ -97,8 +100,8 @@ function groundParallax(ground, canvas) {
     }
 }
 
-function welcomeMouseParallax(ground, domElements) {
-    if (renderer.isElementVisible(ground)) {
+function welcomeMouseParallax(ground, domElements, breakpoint) {
+    if (renderer.isElementVisible(ground) && window.innerWidth > breakpoint ) {
         const mouse = renderer.getMouseWindowCoords()
         domElements.forEach((element, idx) => {
             element.current.style.transform = `translate3d(${mouse.x * (idx + 1) / 200}px, ${mouse.y * (idx + 1) / 200}px, 0)`
@@ -150,7 +153,7 @@ function canvasAnimation() {
             }
 
             // move on hover
-            if ( (blur.x - mouse.x) ** 2 + (blur.y - mouse.y) ** 2 <= this.mouseRadius ** 2 ) {
+            if ( (blur.x - mouse.x) ** 2 + (blur.y - mouse.y) ** 2 <= this.mouseRadius ** 2 && window.innerWidth > this.breakpoint ) {
                 let blurX = 0, blurY = 0
                 const deltaX = mouse.x - blur.x
                 const deltaY = mouse.y - blur.y

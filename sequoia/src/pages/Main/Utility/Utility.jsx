@@ -72,7 +72,7 @@ const Utility = () => {
             <div className="carousel">
                 <Swiper
                     modules={[Scrollbar]}
-                    slidesPerView={3}
+                    slidesPerView={'auto'}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                     >

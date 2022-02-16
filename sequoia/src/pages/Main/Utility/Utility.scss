@@ -8,19 +8,29 @@
     justify-content: center;
     align-items: flex-start;
     margin-top: rem(120);
+    
+    @media screen and (max-width: point(md)) {
+        padding: rem(60) 0;
+        margin-top: rem(60);
+    }
 
     &::before {
         content: '';
         position: absolute;
         width: 100vw;
         height: 300vw;
-        top: 50%; left: 0;
-        transform: translateY(-50%);
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
         background: url(./assets/blur.png);
         background-size: contain;
         background-position: center center;
         background-repeat: no-repeat;
         z-index: -1;
+
+        @media screen and (max-width: point(md)) {
+            width: 300vw;
+            height: 400vw;
+        }
     }
 
     h2 {
@@ -31,6 +41,16 @@
         text-transform: uppercase;
         color: color(common-3);
         margin-left: rem(190);
+
+        @media screen and (max-width: point(md)) {
+            margin-left: rem(24);
+            text-align: center;
+        }
+
+        @media screen and (max-width: point(sm)) {
+            margin-left: 0;
+            text-align: center;
+        }
     }
 
     .carousel {
@@ -52,6 +72,11 @@
         box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.16);
         color: color(common-3);
         font-size: font(24);
+
+        @media screen and (max-width: point(md)) {
+            width: 85vw;
+            height: rem(540);
+        }
 
         svg {
             width: rem(120);
@@ -96,9 +121,15 @@
     .swiper-slide {
         width: auto !important;
         margin-left: rem(40);
+        @media screen and (max-width: point(md)) {
+            margin-left: rem(12);
+        }
 
         &:first-child {
             margin-left: rem(190);
+            @media screen and (max-width: point(md)) {
+                margin-left: rem(24);
+            }
         }
     }
 
@@ -106,10 +137,18 @@
         margin-left: rem(180);
         width: calc(100% - rem(180) * 2) !important;
         background: rgba(255, 255, 255, .2);
+        @media screen and (max-width: point(md)) {
+            margin-left: rem(24);
+            width: calc(100% - rem(24) * 2) !important;
+        }
 
         .swiper-scrollbar-drag {
             background: color(primary);
             width: rem(405) !important;
+
+            @media screen and (max-width: point(md)) {
+                width: rem(25) !important;
+            }
         }
     }
 }

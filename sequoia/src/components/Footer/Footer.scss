@@ -6,6 +6,12 @@ footer {
     align-items: flex-start;
     width: 100%;
     padding: rem(120) rem(190);
+    @media screen and (max-width: point(md)) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: rem(64) rem(24);
+    }
 
     .copyright {
         @include font-fors-regular;
@@ -13,6 +19,9 @@ footer {
         line-height: rem(32);
         color: color(primary);
         opacity: .6;
+        @media screen and (max-width: point(md)) {
+            text-align: center;
+        }
     }
 
     .message {
@@ -23,5 +32,10 @@ footer {
         opacity: .4;
         flex: 1;
         margin-left: rem(86);
+        @media screen and (max-width: point(md)) {
+            margin-left: 0;
+            margin-top: rem(24);
+            text-align: center;
+        }
     }
 }

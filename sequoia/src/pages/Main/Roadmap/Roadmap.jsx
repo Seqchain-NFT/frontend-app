@@ -1,6 +1,8 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 import './Roadmap.scss'
+
+import { ButtonOutlinePrimary } from '../../../components/UI/Button/Button'
 
 import renderer from '../../../utils/renderer'
 
@@ -155,6 +157,7 @@ const dividerHeight = 24 // in %
 
 const Roadmap = () => {
     const roadmapRef = useRef()
+    const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
         renderer.setToRender(roadmapScrollParallax.bind(undefined, roadmapRef), 'roadmapScrollParallax')
@@ -164,7 +167,7 @@ const Roadmap = () => {
     }, [])
 
     return (
-        <div ref={roadmapRef} className="roadmap">
+        <div ref={roadmapRef} className={isActive ? 'roadmap active' : 'roadmap'}>
             <h2>Roadmap</h2>
             <div className="roadmap__scheme">
                 <div className="roadmap__scheme-divider">
@@ -174,7 +177,7 @@ const Roadmap = () => {
                     const stageArray = Object.entries(stage)
                     return (
                         <div key={stageArray[0][0]} className="roadmap__row">
-                            <div><h4 className={ stageArray[0][1][0].done ? 'done' : '' }>{stageArray[0][0]}</h4></div>
+                            <div><h4 className={ isStageDone(stageArray[0][1]) }>{stageArray[0][0]}</h4></div>
                             <div></div>
                             <div>
                                 {stageArray[0][1].map((listItem, idx) => {
@@ -190,13 +193,31 @@ const Roadmap = () => {
                     )
                 })}
             </div>
+            <div className="roadmap__button">
+                <ButtonOutlinePrimary onClick={() => setIsActive(true)}>Show More</ButtonOutlinePrimary>
+            </div>
         </div>
     )
 }
 
+function isAllDone(array) {
+    let doneCount = 0
+    array.forEach(element => {
+        if (element.done) doneCount++
+    })
+    return doneCount === array.length
+}
+
+function isStageDone(array) {
+    let classes = ''
+    if (array[0].done) classes += 'done'
+    if (isAllDone(array)) classes += ' all-done'
+    return classes
+}
+
 function roadmapScrollParallax(roadmap) {
     if (renderer.isElementVisible(roadmap.current)) {
-        const translateY = renderer.getScrollCoordsFromElement(roadmap.current).windowBottom.fromBottom
+        const translateY = renderer.getScrollCoordsFromElement(roadmap.current).windowBottom.fromTop
         roadmap.current.style.transform = `translate3d(0, ${translateY / 5}px, 0)`
     }
 }

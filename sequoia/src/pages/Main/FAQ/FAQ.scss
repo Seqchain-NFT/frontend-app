@@ -4,6 +4,10 @@
     position: relative;
     padding: rem(120) rem(190);
 
+    @media screen and (max-width: point(md)) {
+        padding: rem(64) rem(24);
+    }
+
     h2 {
         @include font-fors-medium;
         font-size: font(40);
@@ -26,6 +30,16 @@
         z-index: -1;
         opacity: .8;
         animation: 5s scaleBlur ease infinite;
+        @media screen and (max-width: point(md)) {
+            width: 100vw;
+            height: 300vw;
+            top: 60%;
+        }
+        @media screen and (max-width: point(sm)) {
+            width: 300vw;
+            height: 400vw;
+            top: 50%;
+        }
     }
 }
 

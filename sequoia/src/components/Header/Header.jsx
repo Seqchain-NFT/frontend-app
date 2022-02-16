@@ -16,7 +16,7 @@ const Header = () => {
                 <a href="#Roadmap" data-text="Roadmap"><span>Roadmap</span></a>
                 <a href="#FAQ" data-text="FAQ"><span>FAQ</span></a>
             </nav>
-            <ButtonOutlinePrimary>Mint</ButtonOutlinePrimary>
+            {/* <ButtonOutlinePrimary>Mint</ButtonOutlinePrimary> */}
             <ButtonOutlineAccent>Connect Wallet</ButtonOutlineAccent>
         </header>
     )

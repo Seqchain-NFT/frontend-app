@@ -17,6 +17,10 @@
     padding-bottom: rem(20);
     padding-right: rem(20);
     cursor: pointer;
+
+    @media screen and (max-width: point(md)) {
+        padding-right: rem(40);
+    }
 }
 
 .accordion__title {
@@ -29,11 +33,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: point(md)) {
+        font-size: font(20);
+    }
 
     svg {
         width: rem(56);
         height: rem(56);
         transition: transform var(--accordion-duration) ease;
+
+        @media screen and (max-width: point(md)) {
+            display: none;
+        }
     }
 }
 
@@ -46,6 +57,10 @@
     max-height: 0;
     margin-bottom: 0;
     transition: max-height var(--accordion-duration) ease, margin-bottom var(--accordion-duration) ease;
+    @media screen and (max-width: point(md)) {
+        font-size: font(16);
+        line-height: rem(28);
+    }
 }
 
 .accordion.active {
@@ -63,5 +78,9 @@
     .accordion__body {
         max-height: rem(100);
         margin-bottom: rem(16);
+        @media screen and (max-width: point(md)) {
+            max-height: rem(200);
+            margin-bottom: rem(8);
+        }
     }
 }

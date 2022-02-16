@@ -11,6 +11,7 @@ import Popups from "./components/Popups/Popups";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CloseButton } from "./components/UI/Toast/Toast";
 
 import renderer from './utils/renderer'
 
@@ -30,7 +31,7 @@ const App = () => {
             <Route path="profile" element={ <Account/> } />
           </Routes>
           <Popups/>
-          <ToastContainer/>
+          <ToastContainer closeButton={CloseButton}/>
         </div>
       </PopupContextProvider>
     </Web3ContextProvider>

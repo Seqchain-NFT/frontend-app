@@ -1,5 +1,59 @@
 @use "../../../styles" as *;
 
-.toast {
+:root {
+    --toast-success-background: rgba(28, 158, 80, 1);
+}
 
+.toast-close {
+    @include font-fors-medium;
+    font-size: font(12);
+    letter-spacing: 0.065em;
+    text-transform: uppercase;
+    color: color(primary);
+    margin-right: rem(12);
+}
+
+.toast-icon {
+    width: rem(40);
+    height: rem(40);
+    min-width: rem(40);
+    min-height: rem(40);
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.toast-message {
+    @include font-fors-demibold;
+    font-size: rem(16);
+    line-height: rem(15);
+    color: color(primary);
+    margin-left: rem(12);
+}
+
+.toast-subtitle {
+    @include font-fors-medium;
+    font-size: rem(12);
+    color: color(primary);
+    margin-left: rem(12);
+    margin-top: 4px;
+}
+
+.toast-success-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--toast-success-background);
+    // margin-top: rem(64);
+    // margin-right: rem(24);
+
+    @media screen and (max-width: point(md)) {
+        // margin-top: 0;
+        // margin-right: 0;
+    }
+}
+
+.toast-success-progress-bar {
+    background: color(primary);
 }

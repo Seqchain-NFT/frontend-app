@@ -5,7 +5,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding: 0 rem(40);
     left: 0;
     top: rem(32);
@@ -62,13 +62,53 @@ header nav {
         white-space: nowrap;
     }
     a::before { transform: translate3d(-50%, -50%, 0); transition: transform .4s ease-in-out;}
-    a::after { transform: translate3d(-50%, 110%, 0); color: color(secondary); transition: transform .3s ease-in-out;}
+    a::after { transform: translate3d(-50%, 200%, 0); color: color(secondary); transition: transform .3s ease-in-out;}
 
     a:hover {
-        &::before { transform: translate3d(-50%, -210%, 0); }
+        &::before { transform: translate3d(-50%, -300%, 0); }
         &::after { transform: translate3d(-50%, -50%, 0); }
     }
 
 }
 
 header > :last-child { margin-left: rem(16); }
+
+header {
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: stretch;
+
+        > :nth-child(2) {
+            margin: 0 rem(16);
+        }
+
+        > :last-child svg {
+            width: rem(24);
+            height: rem(24);
+            transition: transform .3s ease;
+        }
+
+        > :last-child:hover > svg {
+            transform: scale(1.1);
+        }
+
+        button {
+            height: 100%;
+        }
+
+        @media screen and (max-width: point(sm)) {
+            button {
+                padding: rem(8) rem(16) !important;
+            }
+
+            > :nth-child(2) {
+                margin: 0 rem(8);
+            }
+
+            > :last-child {
+                padding: rem(4) !important;
+            }
+        }
+    }
+}

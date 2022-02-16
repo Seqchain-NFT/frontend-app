@@ -1,22 +1,33 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import './PopupMint.scss'
+
 import { ButtonEmpty, ButtonAccent } from '../../UI/Button/Button'
+
 import logoImage from './assets/logo.png'
 import { ReactComponent as MinusIcon } from './assets/minus.svg'
 import { ReactComponent as PlusIcon } from './assets/plus.svg'
+
+import { PopupContext } from '../../../context/PopupContext'
 
 
 const PopupMint = (props) => {
     const MAXT_TO_MINT = 3
 
-    const [ showModal, setShowModal ] = useState(true)
+    const [ showModal, setShowModal ] = useState(false)
     const [ mintCount, setMintCount ] = useState(1)
 
-    
-    function closePopup() {
-        props.scroll(false)
-        setShowModal(false)
-    }
+    const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
+
+    useEffect(() => {
+        if (showPopupName === 'popup-mint') {
+            setShowModal(true)
+        } else
+        if (showPopupName === '') {
+            setShowModal(false)
+        }
+    }, [showPopupName])
+
 
     function updateMintCount(count) {
         const newCount = mintCount + count
@@ -44,7 +55,7 @@ const PopupMint = (props) => {
                     <ButtonAccent>Buy</ButtonAccent>
                 </div>
             </div>
-            <div onClick={closePopup} className="popup__blur"></div>
+            <div onClick={() => setShowPopupName('')} className="popup__blur"></div>
         </div>
     )
 }

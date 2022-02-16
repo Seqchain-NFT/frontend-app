@@ -18,7 +18,7 @@ const Header = (props) => {
     const [isAuthorised, setIsAuthorised] = React.useContext(Web3Context)
 
     const NavigateButton = () => {
-        if (window.location.pathname === '/profile') {
+        if (window.location.href.includes('profile')) {
             return <Link to="/"><ButtonOutlinePrimary>Main</ButtonOutlinePrimary></Link>
         }
         return <Link to="profile"><ButtonOutlinePrimary><UserIcon/>Profile</ButtonOutlinePrimary></Link>
@@ -38,7 +38,7 @@ const Header = (props) => {
     }
 
     const Nav = () => {
-        if (window.location.pathname === '/profile') {
+        if (window.location.href.includes('profile')) {
             return <nav></nav>
         }
         return (

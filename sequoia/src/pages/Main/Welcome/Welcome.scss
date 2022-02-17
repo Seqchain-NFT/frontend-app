@@ -31,6 +31,7 @@
         width: 100%;
         height: auto;
         top: -10vh;
+        pointer-events: none;
         @media screen and (max-width: point(md)) {
             top: 0;
             width: auto;

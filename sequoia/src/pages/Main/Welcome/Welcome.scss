@@ -30,18 +30,22 @@
         top: 0; left: 0;
         width: 100%;
         height: auto;
+        top: -10vh;
         @media screen and (max-width: point(md)) {
-            height: 80vh;
+            top: 0;
             width: auto;
+            height: 80vh;
         }
     }
 
     .welcome__canvas-ground {
         width: 100%;
         height: auto;
+        margin-top: -10vh;
         @media screen and (max-width: point(md)) {
-            height: 80vh;
+            margin-top: 0;
             width: auto;
+            height: 80vh;
         }
     }
 
@@ -118,6 +122,7 @@
         margin-right: auto;
         text-align: left;
         font-size: font(70);
+        line-height: rem(70);
         span { @include font-fors-demibold; }
         @media screen and (max-width: point(md)) {
             font-size: font(56);
@@ -130,12 +135,12 @@
         position: absolute;
         @include font-fors-demibold;
         font-size: font(18);
-        left: 0; top: - rem(8);
+        left: 0; top: - rem(48);
         text-transform: uppercase;
         @media screen and (max-width: point(md)) {
             left: 50%;
             transform: translateX(-50%);
-            top: - rem(12);
+            top: - rem(36);
         }
     }
 
@@ -167,7 +172,7 @@
     }
     .welcome__description-card {
         --card-color: rgba(43, 39, 41, 90%);
-        width: rem(331);
+        flex: 1;
         border-radius: rem(20);
         background-color: var(--card-color);
         box-shadow: 0px rem(24) rem(56) rgba(0, 0, 0, 0.32);

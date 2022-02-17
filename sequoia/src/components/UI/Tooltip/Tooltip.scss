@@ -6,6 +6,10 @@
     box-shadow: 0px 31px 80px rgba(0, 0, 0, 0.0325), 0px 15.6938px 34.875px rgba(0, 0, 0, 0.05), 0px 6.2px 13px rgba(0, 0, 0, 0.0675), 0px 1.35625px 4.625px rgba(0, 0, 0, 0.1) !important;
     padding: rem(32) !important;
     border-radius: rem(20) !important;
+    @media screen and (max-width: point(md)) {
+        width: calc(70%) !important;
+        padding: rem(24) !important;
+    }
 
     &.place-top {
         &::after {
@@ -16,6 +20,18 @@
     &.place-bottom {
         &::after {
             border-bottom-color: color(primary) !important;
+        }
+    }
+
+    &.place-right {
+        &::after {
+            border-right-color: color(primary) !important;
+        }
+    }
+
+    &.place-left {
+        &::after {
+            border-left-color: color(primary) !important;
         }
     }
 

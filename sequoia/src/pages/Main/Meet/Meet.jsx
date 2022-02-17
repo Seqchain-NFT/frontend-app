@@ -13,6 +13,7 @@ import nftLegendaryPlatformImage from './assets/nft-legendary-pattern.png'
 import { ReactComponent as XgenerationIcon } from './assets/xgeneration.svg'
 import { ReactComponent as CircleIcon } from './assets/circle.svg'
 import { ReactComponent as InfoIcon } from './assets/info.svg'
+import xImage from './assets/x.png'
 
 import renderer from '../../../utils/renderer'
 
@@ -44,7 +45,10 @@ const Meet = () => {
             <div className="meet__header">
                 <div className="meet__header-title">
                     <h2>Meet</h2>
-                    <XgenerationIcon/>
+                    <div className="x-generation">
+                        <img src={xImage} alt="" />
+                        <XgenerationIcon/>
+                    </div>
                 </div>
                 <div className="glass-card">
                     <p>Sequoia has been growing for thousands of years and covers different human eras.</p>
@@ -121,20 +125,20 @@ const Meet = () => {
                 <div className="nft-card__description">
                     <div className="title">
                         <h3>Legendary</h3>
-                        <div className="title__icon">
-                            <div>5</div><div>%</div>
+                        <p className="title__icon">
+                            <span>5</span><span>%</span>
                             <CircleIcon/>
-                        </div>
+                        </p>
                     </div>
-                    <div className="subtitle">
-                        <div>50 SEQ/DAY</div>
+                    <p className="subtitle">
+                        <span>50 SEQ/DAY</span>
                         <InfoIcon data-class={meetTooltipClass} data-html={true} data-tip={meetTooltipContent}/>
-                    </div>
+                    </p>
                     <p>The apogee of human development. Intergalactic journey with the spirit <br/>of the Sequoia Keeper. Sounds <br/>fantastical, right? </p>
                 </div>
                 <div className="nft-card__image">
                     <img className="platform" src={nftLegendaryPlatformImage} alt="" />
-                    <div ref={nftLegend}>
+                    <div className='legendary-wrapper' ref={nftLegend}>
                         <img src={nftLegendaryImage} alt="" />
                     </div>
                 </div>

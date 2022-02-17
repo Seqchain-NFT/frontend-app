@@ -103,7 +103,7 @@ export default {
     },
     render() {
         requestAnimationFrame(function render(time) {
-            if (time - this.startTime > 20) {
+            if (time - this.startTime > 10) {
                 this.startTime = performance.now()
                 this.handlers.forEach(item => item.hd(time))
             }

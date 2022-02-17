@@ -72,7 +72,7 @@
     a:hover::before { opacity: .8; }
 }
 
-.join__discord, .join__telegram {
+.join__instagram, .join__telegram {
     position: relative;
     width: rem(80);
     height: rem(80);
@@ -116,10 +116,10 @@
 .join__discord::before {
     transform: scale(-1);
     left: 55%;
-    top: 110%;
+    bottom: 110%;
 }
 
-.join__instagram, .join__twitter {
+.join__discord, .join__twitter {
     position: relative;
     width: rem(120);
     height: rem(120);
@@ -163,7 +163,7 @@
 .join__instagram::before {
     transform: scale(-1);
     left: 55%;
-    bottom: 110%;
+    top: 110%;
 }
 
 @keyframes skew {

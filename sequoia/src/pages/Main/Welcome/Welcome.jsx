@@ -159,20 +159,20 @@ function canvasAnimation() {
                 const deltaY = mouse.y - blur.y
                 if ( Math.abs(deltaX) > Math.abs(deltaY) ) {
                   if (deltaX > 0) {
-                    blurX = blur.x - 1
+                    blurX = blur.x - 0.5
                     blurY = ( -(mouse.x * blur.y - blur.x * mouse.y) - (mouse.y - blur.y) * blurX ) / ( blur.x - mouse.x )
                   }
                   if (deltaX <= 0) {
-                    blurX = blur.x + 1
+                    blurX = blur.x + 0.5
                     blurY = ( -(mouse.x * blur.y - blur.x * mouse.y) - (mouse.y - blur.y) * blurX ) / ( blur.x - mouse.x )
                   }
                 } else {
                   if (deltaY > 0) {
-                    blurY = blur.y - 1
+                    blurY = blur.y - 0.5
                     blurX = ( -(mouse.x * blur.y - blur.x * mouse.y) - (blur.x - mouse.x) * blurY ) / ( mouse.y - blur.y )
                   }
                   if (deltaY <= 0) {
-                    blurY = blur.y + 1
+                    blurY = blur.y + 0.5
                     blurX = ( -(mouse.x * blur.y - blur.x * mouse.y) - (blur.x - mouse.x) * blurY ) / ( mouse.y - blur.y )
                   }
                 }

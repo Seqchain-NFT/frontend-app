@@ -162,7 +162,8 @@ $second-column-width: rem(104);
 
     .roadmap__scheme-divider {
         position: absolute;
-        top: 0; left: 15%;
+        top: 0;
+        left: calc($first-column-width + $second-column-width / 2 - rem(16));
         width: 1px;
         height: 100%;
         background: #2C262A;

@@ -68,9 +68,10 @@ const slides = [
 const Utility = () => {
     return (
         <div className="utility">
-            <h2>Seqchain NFT Utility</h2>
+            <h2>Seqchain NFT BENEFITS</h2>
             <div className="carousel">
                 <Swiper
+                    mousewheel={{ forceToAxis: true }}
                     modules={[Scrollbar]}
                     slidesPerView={'auto'}
                     pagination={{ clickable: true }}

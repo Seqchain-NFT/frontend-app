@@ -361,23 +361,23 @@
         }
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: 120vw;
-        height: 400vw;
-        top: -1000%; left: 50%;
-        transform: translateX(-50%);
-        background: url(./assets/blur-2.png);
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        z-index: -1;
-        animation: 5s scale ease infinite;
-        @media screen and (max-width: point(md)) {
-            display: none;
-        }
-    }
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     width: 120vw;
+    //     height: 400vw;
+    //     top: -1000%; left: 50%;
+    //     transform: translateX(-50%);
+    //     background: url(./assets/blur-2.png);
+    //     background-size: contain;
+    //     background-position: center center;
+    //     background-repeat: no-repeat;
+    //     z-index: -1;
+    //     animation: 5s scale ease infinite;
+    //     @media screen and (max-width: point(md)) {
+    //         display: none;
+    //     }
+    // }
 
     .nft-card__image {
         img {

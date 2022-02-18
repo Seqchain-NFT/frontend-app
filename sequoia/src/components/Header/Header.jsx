@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
 import './Header.scss'
@@ -13,9 +13,27 @@ import { ButtonOutlinePrimary, ButtonOutlineAccent, ButtonEmpty } from '../UI/Bu
 import { PopupContext } from '../../context/PopupContext'
 import { Web3Context } from '../../context/Web3Context'
 
+import renderer from '../../utils/renderer'
+
 const Header = (props) => {
     const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
     const [isAuthorised, setIsAuthorised] = React.useContext(Web3Context)
+
+    const [isScrolled, setIsScrolled] = useState(false)
+    let isHeaderScrolled = false
+
+    useEffect(() => {
+        renderer.setToRender(scrollHeader.bind(undefined, setIsScrolled), 'scrollHeader')
+        return () => renderer.removeFromRender('scrollHeader')
+    }, [])
+
+    function scrollHeader(setIsScrolled) {
+        if (window.scrollY >= 100) {
+            setIsScrolled(true)
+            return
+        }
+        setIsScrolled(false) 
+    }
 
     const NavigateButton = () => {
         if (window.location.href.includes('profile')) {
@@ -54,7 +72,7 @@ const Header = (props) => {
     }
 
     return (
-        <header>
+        <header className={isScrolled ? 'scrolled' : ''}>
             <Link className="logo" to="/"><Logo/></Link>
             <Nav/>
             <Buttons/>

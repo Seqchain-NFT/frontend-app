@@ -1,19 +1,39 @@
 @use '../../styles' as *;
 
 header {
+    --scrolled-duration: 1s;
     position: fixed;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 0 rem(40);
     left: 0;
-    top: rem(32);
     z-index: 10;
-
+    top: 0;
+    padding: rem(32) rem(40);
+    transition: background-color var(--scrolled-duration) ease;
     
     @media screen and (max-width: point(md)) {
-        padding: 0 rem(24);
+        padding: rem(16) rem(24);
+    }
+
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 100%;
+        left: 0; right: 0;
+        height: rem(50);
+        background: linear-gradient(180deg, #161315 0%, rgba(22, 19, 21, 0.991353) 6.67%, rgba(22, 19, 21, 0.96449) 13.33%, rgba(22, 19, 21, 0.91834) 20%, rgba(22, 19, 21, 0.852589) 26.67%, rgba(22, 19, 21, 0.768225) 33.33%, rgba(22, 19, 21, 0.668116) 40%, rgba(22, 19, 21, 0.557309) 46.67%, rgba(22, 19, 21, 0.442691) 53.33%, rgba(22, 19, 21, 0.331884) 60%, rgba(22, 19, 21, 0.231775) 66.67%, rgba(22, 19, 21, 0.147411) 73.33%, rgba(22, 19, 21, 0.0816599) 80%, rgba(22, 19, 21, 0.03551) 86.67%, rgba(22, 19, 21, 0.0086472) 93.33%, rgba(22, 19, 21, 0) 100%);
+        opacity: 0;
+        transition: opacity var(--scrolled-duration) ease;
+    }
+}
+
+header.scrolled {
+    background-color: #161315;
+    &::before {
+        opacity: 1;
     }
 }
 

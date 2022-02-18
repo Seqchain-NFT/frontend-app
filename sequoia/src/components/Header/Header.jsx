@@ -20,7 +20,6 @@ const Header = (props) => {
     const [isAuthorised, setIsAuthorised] = React.useContext(Web3Context)
 
     const [isScrolled, setIsScrolled] = useState(false)
-    let isHeaderScrolled = false
 
     useEffect(() => {
         renderer.setToRender(scrollHeader.bind(undefined, setIsScrolled), 'scrollHeader')

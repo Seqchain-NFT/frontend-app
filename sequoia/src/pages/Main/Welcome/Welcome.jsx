@@ -44,9 +44,7 @@ const Welcome = () => {
         renderer.setToRender(welcomeMouseParallax.bind(undefined, ground.current, parallaxElements, canvas.breakpoint), 'welcomeMouseParallax')
 
         canvas.context = canvas.dom.current.getContext('2d')
-        setTimeout(function() {
-            canvas.blurImages = generateBlursImages.apply(canvas, [ blur1, blur2, blur3, blur4 ])
-        }, 300)
+        ground.current.onload = () => canvas.blurImages = generateBlursImages.apply(canvas, [ blur1, blur2, blur3, blur4 ])
         renderer.setToRender(canvasAnimation.bind(canvas), 'canvasAnimation')
 
         return () => {

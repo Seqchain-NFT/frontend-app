@@ -27,7 +27,7 @@ const Mission = () => {
                 <h2>Our mission</h2>
                 <p>
                     <span>So, what about our goals? We aim to gather a large, close-knit community that we can grow with over 100,000 sequoias and launch many more interesting projects.</span>
-                    <span>We want to provide benefits to everyone involved in our projects. That is why we have prepared a large number of perks for the holders of our first 1000 Seqchain NFT. These goodies will definitely give you an advantage in our future projects and P2E & F2P game!</span>
+                    <span>We want to provide benefits to everyone involved in our projects. That is why we have prepared a large number of perks for the holders of our first 1000 Seqchain NFTs. These goodies will definitely give you an advantage in our future projects and P2E & F2P game!</span>
                 </p>
             </div>
         </div>

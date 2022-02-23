@@ -69,13 +69,13 @@ const Welcome = () => {
             <div className="welcome__text-content">
                 <h1><span>SEQ</span>CHAIN</h1>
                 <div className="welcome__action-buttons">
-                    <ButtonAccent>read whitepaper</ButtonAccent>
-                    <ButtonSecondary><DiscordIcon/>JOIN DISCORD</ButtonSecondary>
+                    <a href="https://wp.seqchain.com" target="_blank"><ButtonAccent>read whitepaper</ButtonAccent></a>
+                   <a href="https://discord.gg/zS6AhyGhSD" target="_blank"><ButtonSecondary><DiscordIcon/>JOIN DISCORD</ButtonSecondary></a>
                 </div>
                 <div className="welcome__description">
                     <div className="welcome__description-card">
                         <h3>Real tree <br/>owner</h3>
-                        <p>With the purchase of the Seqchain NFT you become the owner of a real Sequoia tree and a 20x20 meter plot of land in Taraclia, Moldova.</p>
+                        <p>With the purchase of the Seqchain NFT you become the owner of a real Sequoia tree and a 20x20 meter plot of land in Albota de Sus, Moldova.</p>
                     </div>
                     <div className="welcome__description-card">
                         <h3>Make impact on <br/>ecology</h3>

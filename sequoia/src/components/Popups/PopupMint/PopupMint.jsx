@@ -55,7 +55,7 @@ const PopupMint = (props) => {
                     <ButtonEmpty onClick={() => updateMintCount(1)}><PlusIcon/></ButtonEmpty>
                 </div>
                 <div className="popup-mint__footer">
-                    <p>Total: <span>{ mintCount }</span> BNB</p>
+                    <p>Total: <span>{ mintCount }</span> ETH</p>
                     <ButtonAccent onClick={toastSuccess}>Buy</ButtonAccent>
                 </div>
             </div>

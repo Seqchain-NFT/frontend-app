@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './PopupConnect.scss'
 
 import { ReactComponent as MetamaskIcon } from './assets/metamask.svg'
-import { ReactComponent as BinanceIcon } from './assets/binance.svg'
-import { ReactComponent as MathIcon } from './assets/math.svg'
 import { ReactComponent as WalletIcon } from './assets/wallet.svg'
 
 
@@ -34,16 +32,8 @@ const PopupConnect = (props) => {
                         <p>Metamask</p>
                     </div>
                     <div onClick={() => {setIsAuthorised(true); setShowPopupName('')}} className="popup-connect__wallet">
-                        <BinanceIcon/>
-                        <p>WalletConnect</p>
-                    </div>
-                    <div onClick={() => {setIsAuthorised(true); setShowPopupName('')}} className="popup-connect__wallet">
-                        <MathIcon/>
-                        <p>Binance Chain Wallet</p>
-                    </div>
-                    <div onClick={() => {setIsAuthorised(true); setShowPopupName('')}} className="popup-connect__wallet">
                         <WalletIcon/>
-                        <p>Math Wallet</p>
+                        <p>WalletConnect</p>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ const Join = () => {
     return (
         <div className="join">
             <a className='join__instagram' href="#"><img src={instagramImage} alt="" /></a>
-            <a className='join__discord' href="#"><img src={discordImage} alt="" /></a>
+            <a className='join__discord' href="https://discord.gg/zS6AhyGhSD" target="_blank"><img src={discordImage} alt="" /></a>
             <h2>Join the<br/><span>community</span><br/>right away!</h2>
             <a className='join__twitter' href="#"><img src={twitterImage} alt="" /></a>
             <a className='join__telegram' href="#"><img src={telegramImage} alt="" /></a>

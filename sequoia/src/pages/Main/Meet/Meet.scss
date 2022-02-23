@@ -40,9 +40,8 @@
             color: color(common-3);
         }
         svg {
-            width: rem(284);
+            width: 100%;
             height: auto;
-            margin-top: rem(22);
         }
         @media screen and (max-width: point(md)) {
             margin-bottom: rem(32);
@@ -50,9 +49,12 @@
 
         .x-generation {
             position: relative;
+            margin-top: rem(22);
+            width: rem(284);
+
             img {
                 position: absolute;
-                top: rem(-4);
+                top: rem(-20);
                 left: rem(-50);
                 width: rem(200);
             }

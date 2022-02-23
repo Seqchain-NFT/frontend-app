@@ -41,7 +41,7 @@ const Meet = () => {
     }, [])
 
     return (
-        <div ref={meetScreen} className="meet">
+        <div id="generation" ref={meetScreen} className="meet">
             <div className="meet__header">
                 <div className="meet__header-title">
                     <h2>Meet</h2>

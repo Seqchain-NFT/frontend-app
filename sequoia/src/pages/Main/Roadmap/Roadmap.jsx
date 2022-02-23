@@ -167,7 +167,7 @@ const Roadmap = () => {
     }, [])
 
     return (
-        <div ref={roadmapRef} className={isActive ? 'roadmap active' : 'roadmap'}>
+        <div id="roadmap" ref={roadmapRef} className={isActive ? 'roadmap active' : 'roadmap'}>
             <h2>Roadmap</h2>
             <div className="roadmap__scheme">
                 <div className="roadmap__scheme-divider">

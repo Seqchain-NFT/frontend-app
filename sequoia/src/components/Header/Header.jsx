@@ -14,6 +14,7 @@ import { PopupContext } from '../../context/PopupContext'
 import { Web3Context } from '../../context/Web3Context'
 
 import renderer from '../../utils/renderer'
+import scrollTo from '../../utils/scrollTo';
 
 const Header = (props) => {
     const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
@@ -60,12 +61,12 @@ const Header = (props) => {
         }
         return (
             <nav>
-                <a href="#about" data-text="about"><span>about</span></a>
-                <a href="#generation" data-text="alpha generation"><span>alpha generation</span></a>
-                <a href="#utility" data-text="utility"><span>utility</span></a>
-                <a href="#mission" data-text="mission"><span>mission</span></a>
-                <a href="#Roadmap" data-text="Roadmap"><span>Roadmap</span></a>
-                <a href="#FAQ" data-text="FAQ"><span>FAQ</span></a>
+                <a onClick={() => scrollTo('#about')} data-text="about"><span>about</span></a>
+                <a onClick={() => scrollTo('#generation')} data-text="alpha generation"><span>alpha generation</span></a>
+                <a onClick={() => scrollTo('#utility')} data-text="utility"><span>utility</span></a>
+                <a onClick={() => scrollTo('#mission')} data-text="mission"><span>mission</span></a>
+                <a onClick={() => scrollTo('#roadmap')} data-text="Roadmap"><span>Roadmap</span></a>
+                <a onClick={() => scrollTo('#faq')} data-text="FAQ"><span>FAQ</span></a>
             </nav>
         )
     }

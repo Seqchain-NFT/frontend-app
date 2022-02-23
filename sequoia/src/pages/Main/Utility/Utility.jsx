@@ -67,7 +67,7 @@ const slides = [
 
 const Utility = () => {
     return (
-        <div className="utility">
+        <div id="utility" className="utility">
             <h2>Seqchain NFT BENEFITS</h2>
             <div className="carousel">
                 <Swiper

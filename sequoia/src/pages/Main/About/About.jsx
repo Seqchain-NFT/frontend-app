@@ -7,7 +7,7 @@ import { ButtonAccent } from '../../../components/UI/Button/Button'
 
 const About = () => {
     return (
-        <div className="about">
+        <div id="about" className="about">
             <div className="about__collection">
                 <img className='nft-preview-blur' src={nftPreviewImageBlur} alt="" />
                 <img className='nft-preview' src={nftPreviewImage} alt="" />

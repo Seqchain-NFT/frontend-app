@@ -19,7 +19,7 @@ const Mission = () => {
     }, [])
 
     return (
-        <div ref={mission} className="mission">
+        <div id="mission" ref={mission} className="mission">
             <div className="mission__card">
                 <video ref={video} autoPlay muted="muted" playsInline loop poster="">
                     <source src={forestVideo} type="video/mp4" />

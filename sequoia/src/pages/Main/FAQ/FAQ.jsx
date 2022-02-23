@@ -43,7 +43,7 @@ const questions = [
 
 const FAQ = () => {
     return (
-        <div className="FAQ">
+        <div id="faq" className="FAQ">
             <h2>FAQ</h2>
             <div className="FAQ__list">
                 {questions.map((que, idx) => (

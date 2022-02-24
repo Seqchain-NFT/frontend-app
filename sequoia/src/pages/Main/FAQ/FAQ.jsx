@@ -13,7 +13,7 @@ const questions = [
     },
     {
         title: 'What will the price be for Whitelist members on Presale day?',
-        body: 'The price will be 20% off ($400). The price will be set at the exchange rate in BNB on the day of presale.'
+        body: 'The price will be 20% off ($400). The price will be set at the exchange rate in ETH on the day of presale.'
     },
     {
         title: 'How much Seqchain NFT can be mined per Presale day?',
@@ -43,7 +43,7 @@ const questions = [
 
 const FAQ = () => {
     return (
-        <div className="FAQ">
+        <div id="faq" className="FAQ">
             <h2>FAQ</h2>
             <div className="FAQ__list">
                 {questions.map((que, idx) => (

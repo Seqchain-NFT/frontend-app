@@ -34,16 +34,16 @@ const roadmap = [
     {
         'Q1 2022': [
             {
-                body: 'Creating a site',
+                body: 'Website',
                 done: true,
             },
             {
-                body: 'Whitepaper design',
+                body: 'Whitepaper',
                 done: true,
             },
             {
-                body: 'Pitch Deck design',
-                done: true,
+                body: 'Pitch Deck',
+                done: false,
             },
             {
                 body: 'Attracting partners',
@@ -54,11 +54,11 @@ const roadmap = [
                 done: false,
             },
             {
-                body: 'Seqchain NFT Alpha Generation rendering',
+                body: 'Drawing Seqchain NFT Alpha Generation',
                 done: false,
             },
             {
-                body: 'Smart Contracts Development',
+                body: 'Smart-contracts development',
                 done: false,
             },
             {
@@ -78,11 +78,11 @@ const roadmap = [
                 done: false,
             },
             {
-                body: 'Sequoia Shaman smart contract creation',
+                body: 'Sequoia Shaman smart-contract development',
                 done: false,
             },
             {
-                body: 'Sequoia Shaman design and frontend development',
+                body: 'Frontend and backend development for Sequoia Shaman',
                 done: false,
             },
             {
@@ -102,7 +102,15 @@ const roadmap = [
                 done: false,
             },
             {
-                body: 'SEQ Token Public Sale & IDO',
+                body: 'SEQ Token Public Sale',
+                done: false,
+            },
+            {
+                body: 'Token listing',
+                done: false,
+            },
+            {
+                body: 'Tokenomics',
                 done: false,
             },
             {
@@ -138,22 +146,22 @@ const roadmap = [
     {
         'Q2 2023': [
             {
-                body: 'Planting 1,000 Sequoias in the ground',
+                body: 'Landing 1000 Sequoias in the ground',
                 done: false,
             },
             {
-                body: 'Installation of webcams in areas of 20x20 meters',
+                body: 'Installation of webcams on Sequoia`s plots of land',
                 done: false,
             },
             {
-                body: 'Online broadcast of the tree on the personal page',
+                body: 'Live broadcast of the tree on the personal page',
                 done: false,
             },
         ],
     },
 ]
 
-const dividerHeight = 24 // in %
+const dividerHeight = 20 // in %
 
 const Roadmap = () => {
     const roadmapRef = useRef()
@@ -167,7 +175,7 @@ const Roadmap = () => {
     }, [])
 
     return (
-        <div ref={roadmapRef} className={isActive ? 'roadmap active' : 'roadmap'}>
+        <div id="roadmap" ref={roadmapRef} className={isActive ? 'roadmap active' : 'roadmap'}>
             <h2>Roadmap</h2>
             <div className="roadmap__scheme">
                 <div className="roadmap__scheme-divider">

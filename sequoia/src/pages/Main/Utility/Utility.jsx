@@ -47,12 +47,12 @@ const slides = [
     {
         icon: leaf,
         title: 'Evergreen Giant Tree Sequoia',
-        body: 'The owner writes his name in history, as the tree will live for thousands of years. You will be able to pass on your tree from generation to generation. Moreover, you’ll be able to touch it. You can even cut it down, but then you will cause significant damage to the ecology of the planet, as well as our ideology. Please, don’t do this😔',
+        body: 'The owner writes his name in history, as the tree will live for thousands of years. You will be able to pass on your tree from generation to generation. Moreover, you’ll be able to touch it.',
     },
     {
         icon: game,
         title: 'Advantages in P2E & F2P game',
-        body: 'Seqchain NFT holders will enjoy benefits in play2earn & free2play games. Game design is in progress, and we plan to release the WhitePaper of the game in the third quarter of 2022. So, stay with us!',
+        body: 'Seqchain NFT holders will enjoy benefits in play2earn & free2play game. Game mechanics & Storytelling is in progress. We will share the progress with our community in groups and channels. The release of the game`s WhitePaper is planned for the third quarter of 2022. So, stay with us!',
     },
     {
         icon: land,
@@ -63,7 +63,7 @@ const slides = [
 
 const Utility = () => {
     return (
-        <div className="utility">
+        <div id="utility" className="utility">
             <h2>Seqchain NFT BENEFITS</h2>
             <div className="carousel">
                 <Swiper

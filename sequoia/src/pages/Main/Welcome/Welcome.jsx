@@ -8,6 +8,12 @@ import nftCommonImage from './assets/nft-common.png'
 import nftRareImage from './assets/nft-rare.png'
 import nftLegendaryImage from './assets/nft-legendary.png'
 
+import groundImageWebp from './assets/ground.webp'
+import groundShadowImageWebp from './assets/shadow.webp'
+import nftCommonImageWebp from './assets/nft-common.webp'
+import nftRareImageWebp from './assets/nft-rare.webp'
+import nftLegendaryImageWebp from './assets/nft-legendary.webp'
+
 import blur1 from './assets/blur-1.png'
 import blur2 from './assets/blur-2.png'
 import blur3 from './assets/blur-3.png'
@@ -55,27 +61,47 @@ const Welcome = () => {
     }, [])
 
     return (
-        <div className="welcome">
+        <div id="welcome" className="welcome">
             <div className="welcome__canvas">
-                <img className="welcome__canvas-shadow" src={groundShadowImage} alt="" />
-                <img ref={ground} className="welcome__canvas-ground" src={groundImage} alt=""/>
+                <picture>
+                    <source srcSet={groundShadowImageWebp} type="image/webp"/>
+                    <source srcSet={groundShadowImage} type="image/png"/> 
+                    <img className="welcome__canvas-shadow" src={groundShadowImage} alt="" />
+                </picture>
+                <picture>
+                    <source srcSet={groundImageWebp} type="image/webp"/>
+                    <source srcSet={groundImage} type="image/png"/> 
+                    <img ref={ground} className="welcome__canvas-ground" src={groundImage} alt="" />
+                </picture>
                 <canvas ref={canvas.dom}></canvas>
                 <div className="welcome__canvas-nfts">
-                    <img src={nftCommonImage} ref={parallaxElements[0]} className="nft-common" alt="" />
-                    <img src={nftRareImage} ref={parallaxElements[1]} className="nft-rare" alt="" />
-                    <img src={nftLegendaryImage} ref={parallaxElements[2]} className="nft-legendary" alt="" />
+                    <picture>
+                        <source srcSet={nftCommonImageWebp} type="image/webp"/>
+                        <source srcSet={nftCommonImage} type="image/png"/> 
+                        <img src={nftCommonImage} ref={parallaxElements[0]} className="nft-common" alt="" />
+                    </picture>
+                    <picture>
+                        <source srcSet={nftRareImageWebp} type="image/webp"/>
+                        <source srcSet={nftRareImage} type="image/png"/> 
+                        <img src={nftRareImage} ref={parallaxElements[1]} className="nft-rare" alt="" />
+                    </picture>
+                    <picture>
+                        <source srcSet={nftLegendaryImageWebp} type="image/webp"/>
+                        <source srcSet={nftLegendaryImage} type="image/png"/> 
+                        <img src={nftLegendaryImage} ref={parallaxElements[2]} className="nft-legendary" alt="" />
+                    </picture>
                 </div>
             </div>
             <div className="welcome__text-content">
                 <h1><span>SEQ</span>CHAIN</h1>
                 <div className="welcome__action-buttons">
-                    <ButtonAccent>read whitepaper</ButtonAccent>
-                    <ButtonSecondary><DiscordIcon/>JOIN DISCORD</ButtonSecondary>
+                    <a href="https://wp.seqchain.com" target="_blank"><ButtonAccent>read whitepaper</ButtonAccent></a>
+                   <a href="https://discord.gg/zS6AhyGhSD" target="_blank"><ButtonSecondary><DiscordIcon/>JOIN DISCORD</ButtonSecondary></a>
                 </div>
                 <div className="welcome__description">
                     <div className="welcome__description-card">
                         <h3>Real tree <br/>owner</h3>
-                        <p>With the purchase of the Seqchain NFT you become the owner of a real Sequoia tree and a 20x20 meter plot of land in Taraclia, Moldova.</p>
+                        <p>With the purchase of the Seqchain NFT you become the owner of a real Sequoia tree and a 20x20 meter plot of land in Albota de Sus, Moldova.</p>
                     </div>
                     <div className="welcome__description-card">
                         <h3>Make impact on <br/>ecology</h3>

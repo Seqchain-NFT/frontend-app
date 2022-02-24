@@ -76,7 +76,7 @@ const PopupMint = () => {
                     <ButtonEmpty onClick={() => onChangeAmountHandler(true)}><PlusIcon/></ButtonEmpty>
                 </div>
                 <div className="popup-mint__footer">
-                    <p>Total: <span>{ fromWei(totalPrice.toString()) }</span> BNB</p>
+                    <p>Total: <span>{ fromWei(totalPrice.toString()) }</span> ETH</p>
                     <ButtonAccent disabled={isCanMint} onClick={onMintHandler}>{pending ? <img src={pendingGif} alt="Pending"/> : "Buy"}</ButtonAccent>
                     {
                         errorMessage !== '' && <p className="error">{errorMessage}</p>

@@ -20,37 +20,37 @@ $fonts: (9, 12, 14, 15, 16, 17, 18, 20, 24, 32, 40, 56, 64, 70);
 @mixin importFonts() {
     @font-face {
         font-family: "Lufga";
-        src: url("~fonts/lufga/Lufga-SemiBold.otf") format("truetype");
+        src: url("../fonts/lufga/Lufga-SemiBold.otf") format("truetype");
         font-style: normal;
         font-weight: 600;
     }
     @font-face {
         font-family: "TT Fors";
-        src: url("~fonts/fors/TT Fors Medium.ttf") format("truetype");
+        src: url("../fonts/fors/TT Fors Medium.ttf") format("truetype");
         font-style: normal;
         font-weight: 400;
     }
     @font-face {
         font-family: "TT Fors";
-        src: url("~fonts/fors/TT Fors.ttf") format("truetype");
+        src: url("../fonts/fors/TT Fors.ttf") format("truetype");
         font-style: normal;
         font-weight: 300;
     }
     @font-face {
         font-family: "TT Fors";
-        src: url("~fonts/fors/TT Fors DemiBold.ttf") format("truetype");
+        src: url("../fonts/fors/TT Fors DemiBold.ttf") format("truetype");
         font-style: normal;
         font-weight: 600;
     }
     @font-face {
         font-family: "TT Fors";
-        src: url("~fonts/fors/TT Fors Bold.ttf") format("truetype");
+        src: url("../fonts/fors/TT Fors Bold.ttf") format("truetype");
         font-style: normal;
         font-weight: 700;
     }
     @font-face {
         font-family: "TT Fors";
-        src: url("~fonts/fors/TT Fors Black.ttf") format("truetype");
+        src: url("../fonts/fors/TT Fors Black.ttf") format("truetype");
         font-style: normal;
         font-weight: 900;
     }

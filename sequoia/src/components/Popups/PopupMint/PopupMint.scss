@@ -89,6 +89,16 @@
 
     button {
         margin-top: rem(36);
-        padding: rem(17) rem(64) !important;
+        //padding: rem(17) rem(64) !important;
+        padding: rem(2) rem(64) !important;
+        min-height: 56px;
+        min-width: 164px;
+        img {
+            max-height: 40px;
+        }
+    }
+    p.error {
+        margin-top: 8px;
+        color: #a30101;
     }
 }

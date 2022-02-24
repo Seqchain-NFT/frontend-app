@@ -3,6 +3,7 @@ import './Toast.scss'
 import { toast } from 'react-toastify';
 
 import { ReactComponent as SuccessIcon } from './assets/check.svg'
+import { ReactComponent as ErrorIcon } from './assets/eror.svg'
 
 const CloseButton = ({ closeToast }) => (
     <div onClick={closeToast} className="toast-close">
@@ -10,18 +11,18 @@ const CloseButton = ({ closeToast }) => (
     </div>
   );
 
-const SuccessMessage = ({ closeToast, toastProps }) => (
+const ToastMessage = ({ title, text }) => (
     <div>
-        <p className='toast-message'>Success!</p>
-        <p className='toast-subtitle'>Mint 3 NFT Success</p>
+        <p className='toast-message'>{title}</p>
+        <p className='toast-subtitle'>{text}</p>
     </div>
 )
 
-const toastSuccess = () => toast.success(<SuccessMessage/>, {
-    icon: ({theme, type}) => <div className="toast-icon"><SuccessIcon/></div> ,
-    className: 'toast-success-wrapper',
-    bodyClassName: "toast-success-body",
-    progressClassName: 'toast-success-progress-bar'
+const onToast = (message, status) => toast[status](message, {
+    icon: () => <div className="toast-icon">{status === 'success' ? <SuccessIcon/> : <ErrorIcon/>}</div> ,
+    className: `toast-${status}-wrapper`,
+    bodyClassName: `toast-${status}-body`,
+    progressClassName: `toast-${status}-progress-bar`
 })
 
-export { CloseButton, toastSuccess }
+export { CloseButton, onToast, ToastMessage }

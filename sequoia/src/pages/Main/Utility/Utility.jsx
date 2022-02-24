@@ -1,13 +1,8 @@
 import './Utility.scss'
-
 import { Scrollbar } from 'swiper';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
 
 import { ReactComponent as seq } from './assets/seq.svg'
 import { ReactComponent as co2 } from './assets/co2.svg'
@@ -17,6 +12,7 @@ import { ReactComponent as land } from './assets/land.svg'
 import { ReactComponent as leaf } from './assets/leaf.svg'
 import { ReactComponent as owners } from './assets/owners.svg'
 import { ReactComponent as seqs } from './assets/seqs.svg'
+import {Swiper, SwiperSlide} from "swiper/react/swiper-react";
 
 
 

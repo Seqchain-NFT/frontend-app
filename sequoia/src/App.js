@@ -1,41 +1,49 @@
-import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import {useEffect} from "react";
+import {Routes, Route} from "react-router-dom";
 
 import PopupContextProvider from "./context/PopupContext";
-import Web3ContextProvider from "./context/Web3Context";
 
 import Main from "./pages/Main/Main";
 import Account from "./pages/Account/Account";
 
 import Popups from "./components/Popups/Popups";
 
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CloseButton } from "./components/UI/Toast/Toast";
+import {CloseButton} from "./components/UI/Toast/Toast";
 
 import renderer from './utils/renderer'
+import {storageConnectorKey} from "./config";
+import useAuth from "./hooks/useAuth";
+import {ConnectorNames} from "./utils/web3React";
 
 
 const App = () => {
-  useEffect(() => {
-    renderer.render()
-    renderer.useMouseEvent()
-  }, [])
 
-  return (
-    <Web3ContextProvider>
-      <PopupContextProvider>
-        <div style={{overflow: 'hidden'}} className="App">
-          <Routes>
-            <Route path="/" element={ <Main/> } />
-            <Route path="profile" element={ <Account/> } />
-          </Routes>
-          <Popups/>
-          <ToastContainer closeButton={CloseButton}/>
-        </div>
-      </PopupContextProvider>
-    </Web3ContextProvider>
-  );
+    const {login} = useAuth()
+    const provider = localStorage.getItem(storageConnectorKey)
+    useEffect(() => {
+        if (provider) {
+            login(provider || ConnectorNames.Injected)
+        }
+    }, [login])
+    useEffect(() => {
+        renderer.render()
+        renderer.useMouseEvent()
+    }, [])
+
+    return (
+        <PopupContextProvider>
+            <div style={{overflow: 'hidden'}} className="App">
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="profile" element={<Account/>}/>
+                </Routes>
+                <Popups/>
+                <ToastContainer closeButton={CloseButton}/>
+            </div>
+        </PopupContextProvider>
+    );
 }
 
 export default App;

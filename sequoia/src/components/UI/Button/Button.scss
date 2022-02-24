@@ -16,12 +16,17 @@
     border-radius: var(--button-border);
     transition: background-color .3s, border-color .3s, color .3s, transform .3s;
     cursor: pointer;
+    position: relative;
 
     display: flex;
     justify-content: center;
     align-items: center;
     svg { width: rem(24); height: rem(18); margin-right: rem(8); }
     svg path { transition: fill .3s, stroke .3s; }
+    &:disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
 }
 
 .button-empty {

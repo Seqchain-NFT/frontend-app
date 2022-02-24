@@ -13,9 +13,9 @@ const ButtonOutlineAccent = ({ children, onClick }) => {
     )
 }
 
-const ButtonAccent = ({ children, onClick }) => {
+const ButtonAccent = ({ children, onClick, disabled = false }) => {
     return (
-        <button onClick={onClick} type='button' className='button button-accent'>{ children }</button>
+        <button onClick={onClick} type='button' disabled={disabled} className='button button-accent'>{ children }</button>
     )
 }
 

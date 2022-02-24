@@ -15,6 +15,8 @@ import { CloseButton } from "./components/UI/Toast/Toast";
 
 import renderer from './utils/renderer'
 
+import Preloader from "./components/Preloader/Preloader";
+
 
 const App = () => {
   useEffect(() => {
@@ -32,6 +34,7 @@ const App = () => {
           </Routes>
           <Popups/>
           <ToastContainer closeButton={CloseButton}/>
+          <Preloader/>
         </div>
       </PopupContextProvider>
     </Web3ContextProvider>

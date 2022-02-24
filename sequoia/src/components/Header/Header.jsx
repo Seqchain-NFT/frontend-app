@@ -73,7 +73,7 @@ const Header = (props) => {
 
     return (
         <header className={isScrolled ? 'scrolled' : ''}>
-            <Link className="logo" to="/"><span><Logo/></span></Link>
+            <Link className="logo" onClick={() => scrollTo('#welcome')} to="/"><span><Logo/></span></Link>
             <Nav/>
             <Buttons/>
         </header>

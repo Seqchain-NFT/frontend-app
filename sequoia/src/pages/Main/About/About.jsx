@@ -1,7 +1,10 @@
 import './About.scss'
 
 import nftPreviewImage from './assets/nft-preview.png'
+import nftPreviewImageWebp from './assets/nft-preview.webp'
 import nftPreviewImageBlur from './assets/nft-preview-blur.png'
+import nftPreviewImageBlurWebp from './assets/nft-preview-blur.webp'
+
 
 import { ButtonAccent } from '../../../components/UI/Button/Button'
 
@@ -9,8 +12,16 @@ const About = () => {
     return (
         <div id="about" className="about">
             <div className="about__collection">
-                <img className='nft-preview-blur' src={nftPreviewImageBlur} alt="" />
-                <img className='nft-preview' src={nftPreviewImage} alt="" />
+                <picture>
+                    <source srcSet={nftPreviewImageBlurWebp} type="image/webp"/>
+                    <source srcSet={nftPreviewImageBlur} type="image/png"/> 
+                    <img className='nft-preview-blur' src={nftPreviewImageBlur} alt="" />
+                </picture>
+                <picture>
+                    <source srcSet={nftPreviewImageWebp} type="image/webp"/>
+                    <source srcSet={nftPreviewImage} type="image/png"/> 
+                    <img className='nft-preview' src={nftPreviewImage} alt="nft" />
+                </picture>
             </div> 
             <div className="about__text-content">
                 <h2>About seqchain nft</h2>

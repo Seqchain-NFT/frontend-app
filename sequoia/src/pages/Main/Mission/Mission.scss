@@ -21,6 +21,7 @@
     overflow: hidden;
     border-radius: rem(30);
     padding: rem(86) rem(110);
+    box-shadow: 0px 47px 141px rgba(0, 0, 0, 0.24), 0px 23.7938px 61.4672px rgba(0, 0, 0, 0.24), 0px 9.4px 22.9125px rgba(0, 0, 0, 0.12), 0px 2.05625px 8.15156px rgba(0, 0, 0, 0.08);
 
     @media screen and (max-width: point(md)) {
         padding: rem(96) rem(24);

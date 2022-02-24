@@ -12,6 +12,19 @@ import { PopupContext } from '../../../context/PopupContext'
 
 import { toastSuccess } from '../../UI/Toast/Toast'
 
+import Loader from '../../UI/Loader/Loader'
+
+const ButtonLoading = () => {
+    return (
+        <ButtonAccent onClick={toastSuccess}><Loader name={'buttonLoader'} style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/></ButtonAccent>
+    )
+}
+
+const ButtonBuy = () => {
+    return (
+        <ButtonAccent onClick={toastSuccess}>Buy</ButtonAccent>
+    )
+}
 
 const PopupMint = (props) => {
     const MAXT_TO_MINT = 3
@@ -56,7 +69,8 @@ const PopupMint = (props) => {
                 </div>
                 <div className="popup-mint__footer">
                     <p>Total: <span>{ mintCount }</span> ETH</p>
-                    <ButtonAccent onClick={toastSuccess}>Buy</ButtonAccent>
+                    <ButtonBuy/>
+                    {/* <ButtonLoading/> */}
                 </div>
             </div>
             <div onClick={() => setShowPopupName('')} className="popup__blur"></div>

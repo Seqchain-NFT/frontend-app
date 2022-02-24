@@ -4,7 +4,7 @@ import lottie from 'lottie-web'
 
 import { useEffect, useRef } from 'react'
 
-const Loader = ({ name }) => {
+const Loader = ({ name, style }) => {
     const loaderRef = useRef()
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Loader = ({ name }) => {
     }, [])
 
     return (
-        <div ref={loaderRef} className="loader"></div>
+        <div style={style} ref={loaderRef} className="loader"></div>
     )
 }
 

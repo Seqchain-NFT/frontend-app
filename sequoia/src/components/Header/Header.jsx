@@ -63,8 +63,8 @@ const Header = (props) => {
             <nav>
                 <a onClick={() => scrollTo('#about')} data-text="about"><span>about</span></a>
                 <a onClick={() => scrollTo('#generation')} data-text="alpha generation"><span>alpha generation</span></a>
-                <a onClick={() => scrollTo('#utility')} data-text="utility"><span>utility</span></a>
                 <a onClick={() => scrollTo('#mission')} data-text="mission"><span>mission</span></a>
+                <a onClick={() => scrollTo('#utility')} data-text="utility"><span>utility</span></a>
                 <a onClick={() => scrollTo('#roadmap')} data-text="Roadmap"><span>Roadmap</span></a>
                 <a onClick={() => scrollTo('#faq')} data-text="FAQ"><span>FAQ</span></a>
             </nav>

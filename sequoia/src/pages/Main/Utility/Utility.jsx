@@ -17,6 +17,9 @@ import { ReactComponent as land } from './assets/land.svg'
 import { ReactComponent as leaf } from './assets/leaf.svg'
 import { ReactComponent as owners } from './assets/owners.svg'
 import { ReactComponent as seqs } from './assets/seqs.svg'
+import { useEffect } from 'react';
+
+import { LAPTOP_BREAKPOINT } from '../../../utils/constants';
 
 
 
@@ -76,6 +79,15 @@ const Utility = () => {
                     slidesPerView={'auto'}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
+                    slidesOffsetAfter={20}
+                    allowTouchMove={true}
+                    direction={'horizontal'}
+                    mousewheel={true}
+                    breakpoints={{
+                        [LAPTOP_BREAKPOINT]: {
+                            slidesOffsetAfter: 180
+                        }
+                    }}
                     >
                         {slides.map((slide, idx) => (
                             <SwiperSlide key={idx}>

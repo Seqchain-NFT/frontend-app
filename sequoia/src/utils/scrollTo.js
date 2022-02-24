@@ -5,7 +5,7 @@ const scrollTo = (domElementSelector) => {
     if (domElement) {
         const domElementCoords = renderer.getElementCoords(domElement)
         window.scrollTo({
-            top: domElementCoords.top,
+            top: domElementCoords.top - window.innerHeight / 10,
             behavior: 'smooth'
         })
     } else {

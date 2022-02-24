@@ -128,7 +128,7 @@ function welcomeMouseParallax(ground, domElements, breakpoint) {
     if (renderer.isElementVisible(ground) && window.innerWidth > breakpoint ) {
         const mouse = renderer.getMouseWindowCoords()
         domElements.forEach((element, idx) => {
-            element.current.style.transform = `translate3d(${mouse.x * (idx + 1) / 200}px, ${mouse.y * (idx + 1) / 200}px, 0)`
+            if (element.current) element.current.style.transform = `translate3d(${mouse.x * (idx + 1) / 200}px, ${mouse.y * (idx + 1) / 200}px, 0)`
         })
     }
 }

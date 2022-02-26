@@ -40,7 +40,7 @@ const Header = () => {
 
     return (
         <header className={isScrolled ? 'scrolled' : ''}>
-            <Link className="logo" to="/"><Logo/></Link>
+            <Link className="logo" onClick={() => scrollTo('#welcome')} to="/"><span><Logo/></span></Link>
             {
                 pathname.includes('profile')
                     ? <nav/>

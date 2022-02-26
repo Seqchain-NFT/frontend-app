@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
       - run: mkdir "$HOME/.ssh"
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST_DEV }} >> ~/.ssh/known_hosts
@@ -27,7 +26,12 @@ jobs:
       - name: Move to sequoia
         run: |
           cd sequoia
+          ls
           npm ci
+      - name: Build project
+        run: |
+          cd sequoia
+          ls
           npm run build
       - name: Deploy build
         run: |

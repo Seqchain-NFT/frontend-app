@@ -27,7 +27,7 @@ jobs:
         run: |
           cd sequoia
           ls
-          npm ci
+          npm install
       - name: Build project
         run: |
           cd sequoia

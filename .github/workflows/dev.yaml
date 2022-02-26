@@ -24,10 +24,8 @@ jobs:
       - run: set -eu
       - run: echo "${{ secrets.SSH_PRIV_KEY_DEV }}" > "$HOME/.ssh/SSH_PRIV_KEY"
       - run: chmod 600 "$HOME/.ssh/SSH_PRIV_KEY"
-      - name: Check path
-        run: ls
       - name: Move to sequoia
-        run: cd "$HOME/sequoia"
+        run: cd "./sequoia"
       - run: yarn install
       - run: yarn build
       - run: cd build && rsync -e "ssh -i $HOME/.ssh/SSH_PRIV_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_DEV }}:/var/www/html/

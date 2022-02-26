@@ -26,7 +26,7 @@ jobs:
       - run: chmod 600 "$HOME/.ssh/SSH_PRIV_KEY"
       - name: Move to sequoia
         working-directory: ./sequoia
-          run: |
-            yarn install
-            yarn build
-            cd build && rsync -e "ssh -i $HOME/.ssh/SSH_PRIV_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_DEV }}:/var/www/html/
+        run: |
+          yarn install
+          yarn build
+          cd build && rsync -e "ssh -i $HOME/.ssh/SSH_PRIV_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_DEV }}:/var/www/html/

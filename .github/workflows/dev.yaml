@@ -27,8 +27,8 @@ jobs:
       - name: Move to sequoia
         run: |
           cd sequoia
-          yarn install
-          yarn build
+          npm ci
+          npm run build
       - name: Deploy build
         run: |
           cd sequoia

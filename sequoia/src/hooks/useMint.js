@@ -7,6 +7,8 @@ import {BigNumber} from "ethers";
 import {BN_0} from "../config";
 import {onToast, ToastMessage} from "../components/UI/Toast/Toast";
 import {shortAddress} from "../utils";
+import keccak256 from "keccak256";
+import {MerkleTree} from "merkletreejs";
 
 export const ESaleStatus = {
     Enable: 0,
@@ -65,13 +67,20 @@ export default function useMint() {
         getData()
     }, [getData, blockNumber])
 
+    const proof = useMemo(() => {
+        const leaves = whitelist.map(v => keccak256(v))
+        const tree = new MerkleTree(leaves, keccak256, { sort: true })
+        const leaf = keccak256(account)
+        return tree.getHexProof(leaf)
+    }, [account])
+
 
     const onMintPreSale = useCallback((amount) => {
         if (marketContract) {
             setPending(true)
             const value = price.mul(BigNumber.from(amount))
             console.log('presale')
-            marketContract.mintPresale(amount, whitelist, {value: value.toString(), from: account})
+            marketContract.mintPresale(amount, proof, {value: value.toString(), from: account})
                 .then(async (res) => {const result = await res.wait()
                     onToast(<ToastMessage title={'Mint NFT!'}
                                           text={`PreSale mint ${amount} ${result.status === 1 ? 'Success' : 'Failed'} ${shortAddress(res.hash)}`}/>, result.status === 1  ?'success' : 'error')
@@ -84,7 +93,7 @@ export default function useMint() {
                     setPending(false)
                 })
         }
-    }, [account, marketContract, price])
+    }, [account, marketContract, price, proof])
 
 
     const onMint = useCallback((amount) => {

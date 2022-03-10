@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
-import {useSequoiaMarketContract, useSequoiaNFTContract} from "./useContract";
+import {useSequoiaMarketContract} from "./useContract";
 import whitelist from '../data/whitelist.json'
 import useActiveWeb3React from "./useActiveWeb3React";
 import useBlockNumber from "./useBlockNumber";
@@ -17,7 +17,6 @@ export const ESaleStatus = {
 }
 export default function useMint() {
     const marketContract = useSequoiaMarketContract()
-    const nftContract = useSequoiaNFTContract()
 
     const [balance, setBalance] = useState(BN_0);
     const [maxTokenPurchase, setMaxTokenPurchase] = useState(0);
@@ -61,7 +60,7 @@ export default function useMint() {
                     console.log(e);
                 })
         }
-    }, [marketContract, nftContract])
+    }, [account, library, marketContract])
 
     useEffect(() => {
         getData()

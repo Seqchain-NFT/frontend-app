@@ -1,0 +1,39 @@
+name: Develop
+
+on: 
+  push: 
+    branches: 
+      - stage
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: mkdir "$HOME/.ssh"
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST_STAGE }} >> ~/.ssh/known_hosts
+      - run: set -eu
+      - run: echo "${{ secrets.SSH_PRIV_KEY_STAGE }}" > "$HOME/.ssh/SSH_PRIV_KEY"
+      - run: chmod 600 "$HOME/.ssh/SSH_PRIV_KEY"
+      - name: Move to sequoia
+        run: |
+          cd sequoia
+          ls
+          npm install
+      - name: Build project
+        run: |
+          cd sequoia
+          ls
+          npm run build
+      - name: Deploy build
+        run: |
+          cd sequoia
+          cd build && rsync -e "ssh -i $HOME/.ssh/SSH_PRIV_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_STAGE }}:/var/www/html/

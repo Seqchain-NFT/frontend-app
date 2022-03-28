@@ -145,11 +145,6 @@
 
         .swiper-scrollbar-drag {
             background: color(primary);
-            width: rem(405) !important;
-
-            @media screen and (max-width: point(md)) {
-                width: rem(25) !important;
-            }
         }
     }
 }

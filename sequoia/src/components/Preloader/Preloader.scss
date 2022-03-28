@@ -1,0 +1,27 @@
+@use '../../styles' as *;
+
+.preloader {
+    position: fixed;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: black;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .loader {
+        width: rem(214);
+        height: rem(214);
+    }
+
+    p {
+        @include font-fors-regular;
+        font-size: font(16);
+        line-height: rem(24);
+        letter-spacing: -0.01em;
+        color: color(primary);
+        margin-top: rem(-48);
+    }
+}

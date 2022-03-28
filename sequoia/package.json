@@ -11,6 +11,8 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "6.2.4",
+    "async": "^3.2.3",
+    "axios": "^0.26.1",
     "ethers": "^5.5.4",
     "keccak256": "^1.0.6",
     "lodash": "^4.17.21",
@@ -25,7 +27,7 @@
     "sass": "^1.49.7",
     "swiper": "^8.0.6",
     "web-vitals": "^2.1.4",
-    "web3-utils": "^1.7.0"
+    "web3-utils": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

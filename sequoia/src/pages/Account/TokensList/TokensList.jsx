@@ -1,45 +1,67 @@
 import './TokensList.scss'
-
-import nftCommonImage from './assets/nft-common.png'
-import nftEpicImage from './assets/nft-epic.png'
-import nftLegendaryImage from './assets/nft-legendary.png'
-import nftRareImage from './assets/nft-rare.png'
-import nftQueImage from './assets/nft-que.png'
-
-
-import { ButtonOutlinePrimary } from '../../../components/UI/Button/Button'
+import {ButtonOutlinePrimary} from '../../../components/UI/Button/Button'
 import Label from '../../../components/UI/Label/Label'
+import {useFarm} from "../../../hooks/useFarm";
+import {fromWei} from "web3-utils";
+import {shortBalance} from "../../../utils";
+import nftQueImage from './assets/nft-que.png'
+import React, {useCallback, useMemo, useState} from "react";
+import useActiveWeb3React from "../../../hooks/useActiveWeb3React";
+import pendingGif from "../../../assets/pending.gif";
+import {ReactComponent as ChevronLeft} from '../../../assets/chevron-left.svg'
+import {ReactComponent as ChevronRight} from '../../../assets/chevron-right.svg'
 
-const tokens = [
-    'rare', 'epic', 'legendary', 'common'
-]
-
-const TokensList = () => {
-    const nftImages = {
-        'common': nftCommonImage, 
-        'legendary': nftLegendaryImage, 
-        'epic': nftEpicImage, 
-        'rare': nftRareImage, 
-        'que': nftQueImage
-    }
-
-    const Token = ({ rarity, idx, claimTitle, claim }) => {
-        return (
-            <div className={rarity === 'que' ? 'token que' : 'token'}>
-                <div className="token__number">#{ idx }</div>
-                <img src={nftImages[rarity]} alt="nft image" />
-                <div className="token__rarity">
-                    <Label rarity={rarity}>{ rarity === 'que' ? '' : rarity }</Label>
-                    <p className="subtitle">{rarity === 'que' ? '' :'This nft generate:'}</p>
-                    <p className="generate">{rarity === 'que' ? '' : '25 seq/day'}</p>
-                </div>
-                <div className="token__claim">
-                    <p className="subtitle">{ claimTitle || 'waiting for claim:'}</p>
-                    <p className="claim">{ claim || 500 }</p>
-                </div>
+const Token = ({nft}) => {
+    return (
+        <div className={nft.rarity === 'que' ? 'token que' : 'token'}>
+            <div className="token__number">#{nft.id}</div>
+            <img src={nft.image || nftQueImage} alt={`nft ${nft.id}`}/>
+            <div className="token__rarity">
+                <Label rarity={nft.rarity}>{nft.rarity === 'que' ? '' : nft.rarity}</Label>
+                <p className="subtitle">{nft.rarity === 'que' ? '' : 'This nft generate:'}</p>
+                <p className="generate">{nft.rarity === 'que' ? '' : `${shortBalance(fromWei(nft.rewardPerBlock.toString()))} seq/day`}</p>
             </div>
-        )
-    }
+            <div className="token__claim">
+                {/*<p className="sub title">{ claimTitle || 'waiting for claim:'}</p>*/}
+                {
+                    nft.status === '0'
+                    ?<p className="subtitle">NFT Disabled</p>
+                        : <>
+                            <p className="subtitle">waiting for claim:</p>
+                            <p className="claim">{shortBalance(fromWei(nft.reward.toString())) || 0}</p>
+                        </>
+                }
+            </div>
+        </div>
+    )
+}
+const TokensList = () => {
+    const {account} = useActiveWeb3React()
+
+    const {nftsData, onEnable, onClaim, pending} = useFarm()
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const pages = useMemo(() => {
+        const count = Math.ceil(nftsData.length / 10)
+        const p = []
+        for (let i = 0; i < count; i++) {
+            p.push(i)
+        }
+        return p
+    }, [nftsData])
+
+    const onClickHandler = useCallback(() => {
+        if (nftsData.filter((nft) => nft.status === '0').length > 0) {
+            onEnable()
+        } else {
+            onClaim()
+        }
+    }, [nftsData, onClaim, onEnable])
+
+    const buttonText = useMemo(() => {
+        return nftsData.length === 0 ? 'No NFT'
+            : nftsData.filter((nft) => nft.status === '0').length === 0 ? "CLAIM ALL TOKENS" : "ENABLE FARMING"
+    }, [nftsData])
 
     return (
         <div className="tokens-list">
@@ -48,13 +70,40 @@ const TokensList = () => {
                     <h1>Profile</h1>
                     <h2>Your NFT’s</h2>
                 </div>
-                <ButtonOutlinePrimary>Claim all tokens</ButtonOutlinePrimary>
+                <ButtonOutlinePrimary onClick={onClickHandler} disabled={!account || nftsData.length === 0}>
+                    {pending ? <img src={pendingGif} alt="Pending"/> : buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
-            <Token key={tokens.length + 1} rarity={'que'} idx={tokens.length + 1} claimTitle="reaveal in" claim="3 days"/>
-                {tokens.map((token, idx) => (
-                    <Token key={tokens.length - idx} rarity={token} idx={tokens.length - idx}/>
+                {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (
+                    <Token key={token.id} nft={token}/>
                 ))}
+            </div>
+            <div className="pagination">
+                {
+                    currentPage !== 0 &&
+                    <div onClick={() => setCurrentPage(prevState => prevState - 1)}
+                         className={["page"].join(' ')}>
+                        <ChevronLeft height={16}/>
+                    </div>
+                }
+                {
+                    pages.map((page) => {
+                        return (
+                            <div key={`Page-${page}`} onClick={() => setCurrentPage(page)}
+                                 className={["page", page === currentPage ? 'active' : ''].join(' ')}>
+                                <span>{page + 1}</span>
+                            </div>
+                        )
+                    })
+                }
+
+                {
+                    currentPage !== Math.floor(nftsData.length / 10) &&
+                    <div onClick={() => setCurrentPage(prevState => prevState + 1)}
+                         className={["page"].join(' ')}>
+                        <ChevronRight height={16}/>
+                    </div>
+                }
             </div>
         </div>
     )

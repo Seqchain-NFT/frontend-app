@@ -26,12 +26,10 @@ jobs:
       - name: Move to sequoia
         run: |
           cd sequoia
-          ls
           npm install
       - name: Build project
         run: |
           cd sequoia
-          ls
           npm run build
       - name: Deploy build
         run: |

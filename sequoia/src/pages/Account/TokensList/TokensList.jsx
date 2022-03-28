@@ -7,9 +7,9 @@ import {shortBalance} from "../../../utils";
 import nftQueImage from './assets/nft-que.png'
 import React, {useCallback, useMemo, useState} from "react";
 import useActiveWeb3React from "../../../hooks/useActiveWeb3React";
-import pendingGif from "../../../assets/pending.gif";
 import {ReactComponent as ChevronLeft} from '../../../assets/chevron-left.svg'
 import {ReactComponent as ChevronRight} from '../../../assets/chevron-right.svg'
+import Loader from "../../../components/UI/Loader/Loader";
 
 const Token = ({nft}) => {
     return (
@@ -22,7 +22,6 @@ const Token = ({nft}) => {
                 <p className="generate">{nft.rarity === 'que' ? '' : `${shortBalance(fromWei(nft.rewardPerBlock.toString()))} seq/day`}</p>
             </div>
             <div className="token__claim">
-                {/*<p className="sub title">{ claimTitle || 'waiting for claim:'}</p>*/}
                 {
                     nft.status === '0'
                     ?<p className="subtitle">NFT Disabled</p>
@@ -71,7 +70,8 @@ const TokensList = () => {
                     <h2>Your NFT’s</h2>
                 </div>
                 <ButtonOutlinePrimary onClick={onClickHandler} disabled={!account || nftsData.length === 0}>
-                    {pending ? <img src={pendingGif} alt="Pending"/> : buttonText}</ButtonOutlinePrimary>
+                    {pending ? <Loader name={'preloader-loader'}
+                                       style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/>: buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
                 {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (

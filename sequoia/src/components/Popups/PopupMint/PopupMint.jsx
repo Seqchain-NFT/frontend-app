@@ -7,18 +7,17 @@ import {ButtonAccent, ButtonEmpty} from '../../UI/Button/Button'
 import logoImage from './assets/logo.png'
 import {ReactComponent as MinusIcon} from './assets/minus.svg'
 import {ReactComponent as PlusIcon} from './assets/plus.svg'
-import pendingGif from '../../../assets/pending.gif'
-
 import {PopupContext} from '../../../context/PopupContext'
 
 import useMint, {ESaleStatus} from "../../../hooks/useMint";
 import {BigNumber} from "ethers";
 import {fromWei} from "web3-utils";
+import Loader from "../../UI/Loader/Loader";
 
 const PopupMint = () => {
     const {maxTokenPurchase, status, price, pending, balance, mint} = useMint()
-    const [ showModal, setShowModal ] = useState(false)
-    const [ mintCount, setMintCount ] = useState(1)
+    const [showModal, setShowModal] = useState(false)
+    const [mintCount, setMintCount] = useState(1)
     const [errorMessage, setErrorMessage] = useState('');
 
     const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
@@ -26,13 +25,12 @@ const PopupMint = () => {
     useEffect(() => {
         if (showPopupName === 'popup-mint') {
             setShowModal(true)
-        } else
-        if (showPopupName === '') {
+        } else if (showPopupName === '') {
             setShowModal(false)
         }
     }, [showPopupName])
 
-    const onChangeAmountHandler = useCallback ((isAdd) => {
+    const onChangeAmountHandler = useCallback((isAdd) => {
         setMintCount(prevState => {
             let newValue = isAdd ? prevState + 1 : prevState - 1
             return newValue > maxTokenPurchase ? maxTokenPurchase : newValue <= 0 ? 0 : newValue
@@ -66,24 +64,26 @@ const PopupMint = () => {
         <div className={showModal ? 'popup show' : 'popup'}>
             <div className="popup-mint">
                 <div className="popup-mint__title">
-                    <img src={logoImage} alt="" />
+                    <img src={logoImage} alt=""/>
                     <h3>seqchain mint</h3>
                     <p>Choose the number NFT to mint</p>
                 </div>
                 <div className="popup-mint__input">
                     <ButtonEmpty onClick={() => onChangeAmountHandler(false)}><MinusIcon/></ButtonEmpty>
-                    <p>{ mintCount }</p>
+                    <p>{mintCount}</p>
                     <ButtonEmpty onClick={() => onChangeAmountHandler(true)}><PlusIcon/></ButtonEmpty>
                 </div>
                 <div className="popup-mint__footer">
-                    <p>Total: <span>{ fromWei(totalPrice.toString()) }</span> ETH</p>
-                    <ButtonAccent disabled={isCanMint} onClick={onMintHandler}>{pending ? <img src={pendingGif} alt="Pending"/> : "Buy"}</ButtonAccent>
+                    <p>Total: <span>{fromWei(totalPrice.toString())}</span> ETH</p>
+                    <ButtonAccent disabled={isCanMint} onClick={onMintHandler}>{pending ?
+                        <Loader name={'preloader-loader'}
+                                style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/> : "Buy"}</ButtonAccent>
                     {
                         errorMessage !== '' && <p className="error">{errorMessage}</p>
                     }
                 </div>
             </div>
-            <div onClick={() => setShowPopupName('')} className="popup__blur" />
+            <div onClick={() => setShowPopupName('')} className="popup__blur"/>
         </div>
     )
 }

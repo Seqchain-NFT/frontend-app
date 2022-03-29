@@ -6,7 +6,7 @@ import {
 } from "./useContract";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {useNftBalance} from "./useNftBalance";
-import async from "async";
+import _ from 'lodash'
 import {axiosInstance, handle} from "../api";
 import {BN_0} from "../config";
 import {onToast, ToastMessage} from "../components/UI/Toast/Toast";
@@ -30,7 +30,7 @@ export function useFarm() {
     const nftsBalance = useNftBalance(contract)
 
     const nfts = useMemo(() => {
-        return [...nftsBalance.sort((a, b) => parseInt(b) - parseInt(a) )]
+        return [...nftsBalance.sort((a, b) => parseInt(b) - parseInt(a))]
     }, [nftsBalance])
 
     const getLastRewardProps = useMemo(() => {
@@ -159,20 +159,29 @@ export function useFarm() {
         }
     }, [farmContract, multicallContract, nfts, getRewardsPerBlockProps])
 
-    useEffect(() => {
+    const onGetImages = useCallback( async() => {
         if (nfts.length > 0) {
-            async.mapSeries(nfts, async nft => {
+            console.log('here', nfts)
+            const images = []
+            for (const nft of nfts) {
                 const [res, err] = await handle(axiosInstance.get(nft))
                 if (res !== undefined) {
-                    return res['image']
+                    images.push({
+                        id: parseInt(nft),
+                        image: res['image']
+                    })
                 }
                 if (err !== undefined) console.log(err);
-                return ''
-            }).then(images => {
-                setNftImages(images);
-            })
+            }
+            const sortImages = _.orderBy(images, ['id'], ['desc'])
+            console.log(Object.values(sortImages).map((item) => item.image))
+            setNftImages(Object.values(sortImages).map((item) => item.image))
         }
     }, [nfts])
+
+    useEffect(() => {
+        onGetImages()
+    }, [onGetImages])
 
     const nftsData = useMemo(() => {
         return nfts.map((nft, id) => {

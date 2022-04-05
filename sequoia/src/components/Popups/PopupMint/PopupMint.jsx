@@ -16,11 +16,20 @@ import Loader from "../../UI/Loader/Loader";
 
 const PopupMint = () => {
     const {maxTokenPurchase, status, price, pending, balance, mint} = useMint()
+    const [mintPending, setMintPending] = useState(false);
     const [showModal, setShowModal] = useState(false)
     const [mintCount, setMintCount] = useState(1)
     const [errorMessage, setErrorMessage] = useState('');
 
     const [showPopupName, setShowPopupName] = React.useContext(PopupContext)
+
+    useEffect(() => {
+        if (!pending && mintPending) {
+            setMintPending(false)
+            setShowModal(false)
+            setShowPopupName('')
+        }
+    }, [mintPending, pending, setShowPopupName])
 
     useEffect(() => {
         if (showPopupName === 'popup-mint') {
@@ -57,6 +66,7 @@ const PopupMint = () => {
     }, [pending, totalPrice, balance, status, mintCount])
 
     const onMintHandler = useCallback(() => {
+        setMintPending(true)
         mint(mintCount)
     }, [mint, mintCount])
 

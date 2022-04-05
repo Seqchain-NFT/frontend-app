@@ -12,7 +12,7 @@ const Preloader = () => {
         setShowPopupName('popup-preloader')
         window.addEventListener('DOMContentLoaded', removePreloader.bind(undefined, preloaderRef.current, setShowPopupName))
         return () => window.removeEventListener('DOMContentLoaded', removePreloader.bind(undefined, preloaderRef.current, setShowPopupName))
-    }, [])
+    }, [setShowPopupName])
 
     return (
         <div ref={preloaderRef} className="preloader">

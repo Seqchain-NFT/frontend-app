@@ -75,8 +75,8 @@ export default function useMint() {
 
 
     const onMintPreSale = useCallback((amount) => {
+        setPending(true)
         if (marketContract) {
-            setPending(true)
             const value = price.mul(BigNumber.from(amount))
             console.log('presale')
             marketContract.mintPresale(amount, proof, {value: value.toString(), from: account})
@@ -91,15 +91,17 @@ export default function useMint() {
                 .finally(() => {
                     setPending(false)
                 })
+        } else {
+            setPending(false)
         }
     }, [account, marketContract, price, proof])
 
 
     const onMint = useCallback((amount) => {
+        setPending(true)
         if (marketContract) {
-            setPending(true)
             const value = price.mul(BigNumber.from(amount))
-            marketContract.mint(amount, {value: value.toString(), from: account})
+            return marketContract.mint(amount, {value: value.toString(), from: account})
                 .then(async (res) => {
                     const result = await res.wait()
                     onToast(<ToastMessage title={'Mint NFT!'}
@@ -112,6 +114,8 @@ export default function useMint() {
                 .finally(() => {
                     setPending(false)
                 })
+        } else {
+            setPending(false)
         }
     }, [account, marketContract, price])
 

@@ -161,7 +161,6 @@ export function useFarm() {
 
     const onGetImages = useCallback( async() => {
         if (nfts.length > 0) {
-            console.log('here', nfts)
             const images = []
             for (const nft of nfts) {
                 const [res, err] = await handle(axiosInstance.get(nft))
@@ -174,7 +173,6 @@ export function useFarm() {
                 if (err !== undefined) console.log(err);
             }
             const sortImages = _.orderBy(images, ['id'], ['desc'])
-            console.log(Object.values(sortImages).map((item) => item.image))
             setNftImages(Object.values(sortImages).map((item) => item.image))
         }
     }, [nfts])
@@ -184,6 +182,7 @@ export function useFarm() {
     }, [onGetImages])
 
     const nftsData = useMemo(() => {
+        console.log(nfts)
         return nfts.map((nft, id) => {
             return {
                 id: nft,

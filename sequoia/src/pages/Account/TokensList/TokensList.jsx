@@ -10,16 +10,17 @@ import useActiveWeb3React from "../../../hooks/useActiveWeb3React";
 import {ReactComponent as ChevronLeft} from '../../../assets/chevron-left.svg'
 import {ReactComponent as ChevronRight} from '../../../assets/chevron-right.svg'
 import Loader from "../../../components/UI/Loader/Loader";
+import TokenReveal from "./TokenReveal";
 
 const Token = ({nft}) => {
     return (
-        <div className={nft.rarity === 'que' ? 'token que' : 'token'}>
+        <div className={'token'}>
             <div className="token__number">#{nft.id}</div>
             <img src={nft.image || nftQueImage} alt={`nft ${nft.id}`}/>
             <div className="token__rarity">
-                <Label rarity={nft.rarity}>{nft.rarity === 'que' ? '' : nft.rarity}</Label>
-                <p className="subtitle">{nft.rarity === 'que' ? '' : 'This nft generate:'}</p>
-                <p className="generate">{nft.rarity === 'que' ? '' : `${shortBalance(fromWei(nft.rewardPerBlock.toString()))} seq/day`}</p>
+                <Label rarity={nft.rarity}>{nft.rarity}</Label>
+                <p className="subtitle">{'This nft generate:'}</p>
+                <p className="generate">{`${shortBalance(fromWei(nft.rewardPerBlock.toString()))} seq/day`}</p>
             </div>
             <div className="token__claim">
                 {
@@ -69,11 +70,14 @@ const TokensList = () => {
                     <h1>Profile</h1>
                     <h2>Your NFT’s</h2>
                 </div>
-                <ButtonOutlinePrimary onClick={onClickHandler} disabled={!account || nftsData.length === 0}>
+                <ButtonOutlinePrimary onClick={onClickHandler}
+                                      // disabled={!account || nftsData.length === 0}>
+                                      disabled={true}>
                     {pending ? <Loader name={'preloader-loader'}
                                        style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/>: buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
+                <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days"/>
                 {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (
                     <Token key={token.id} nft={token}/>
                 ))}

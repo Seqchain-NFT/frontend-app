@@ -182,7 +182,6 @@ export function useFarm() {
     }, [onGetImages])
 
     const nftsData = useMemo(() => {
-        console.log(nfts)
         return nfts.map((nft, id) => {
             return {
                 id: nft,

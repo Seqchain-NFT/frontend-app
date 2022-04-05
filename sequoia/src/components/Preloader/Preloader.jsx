@@ -1,40 +1,47 @@
 import './Preloader.scss'
 
 import Loader from '../UI/Loader/Loader'
-import { useContext, useEffect, useRef } from 'react'
-import { PopupContext } from '../../context/PopupContext'
+import {useCallback, useContext, useEffect, useRef, useState} from 'react'
+import {PopupContext} from '../../context/PopupContext'
 
 const Preloader = () => {
     const preloaderRef = useRef()
+    const [showPreloader, setShowPreloader] = useState(false);
     const [showPopupName, setShowPopupName] = useContext(PopupContext) // чтобы отключить скролл
 
-    useEffect(() => {
-        setShowPopupName('popup-preloader')
-        window.addEventListener('DOMContentLoaded', removePreloader.bind(undefined, preloaderRef.current, setShowPopupName))
-        return () => window.removeEventListener('DOMContentLoaded', removePreloader.bind(undefined, preloaderRef.current, setShowPopupName))
+    const removePreloader = useCallback(() => {
+        console.log('remove')
+        const delay = 1500
+        const duration = 500
+        if (preloaderRef.current) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    setShowPopupName('')
+                }, duration)
+            }, delay)
+        }
     }, [setShowPopupName])
 
+    useEffect(() => {
+        if (showPopupName === 'popup-preloader') {
+            setShowPreloader(true)
+            removePreloader()
+        } else if (showPopupName === '') {
+            setShowPreloader(false)
+        }
+        if (preloaderRef.current !== null) {
+            window.addEventListener('DOMContentLoaded', removePreloader)
+            return () => window.removeEventListener('DOMContentLoaded', removePreloader)
+        }
+    }, [removePreloader, setShowPopupName, showPopupName])
+
     return (
-        <div ref={preloaderRef} className="preloader">
+        <div ref={preloaderRef} className={["preloader", showPreloader ? 'show' : ''].join(' ')}>
             <Loader name={'preloader-loader'}/>
             <p>Loading...</p>
         </div>
     )
 }
 
-const removePreloader = (preloaderDom, setShowPopupName) => {
-    const delay = 1500
-    const duration = 500
-    setTimeout(() => {
-        preloaderDom.style.cssText = `
-            transition: ${duration}ms ease;
-            opacity: 0;
-        `
-        setTimeout(() => {
-            preloaderDom.remove()
-        }, duration)
-        setShowPopupName('')
-    }, delay)
-}
 
 export default Preloader

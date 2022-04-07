@@ -7,12 +7,12 @@ import Multicall_Abi from './abi/Multicall.json'
 
 const SequoiaNFTAddress = {
     [ChainId.MAINNET]: '',
-    [ChainId.TESTNET]: '0x00212d4b6c65d9dAe997d543ab77f1C96571D2fe'
+    [ChainId.TESTNET]: '0x3358D1FbA958ceE051a16d5A3Db9a898930B81aC'
 }
 
 const SequoiaMarketAddress = {
     [ChainId.MAINNET]: '',
-    [ChainId.TESTNET]: '0x964094a42B6a077cd7C58bA4e90F669173c1cD0A'
+    [ChainId.TESTNET]: '0x2FF7daD560B30ABA75183fCC8411bDa31da12BDD'
 }
 
 const AlphaGenerationRegistryAddress = {
@@ -22,12 +22,12 @@ const AlphaGenerationRegistryAddress = {
 
 const SeqchainTokenAddress = {
     [ChainId.MAINNET]: '',
-    [ChainId.TESTNET]: '0x96c9DE3e56D8A63F0a9422c643082643545E58B0'
+    [ChainId.TESTNET]: '0xB80e1df0Fa6D5Efa370Af76E9542fEaeC8034553'
 }
 
 const FarmAddress = {
     [ChainId.MAINNET]: '',
-    [ChainId.TESTNET]: '0xbeb1a1604ccf196366b3FB2e6f964758b5eE5271'
+    [ChainId.TESTNET]: '0x0a6C2F368c34186AAC223D115AdCB41E3ED241a9'
 }
 
 const MulticallAddress = {

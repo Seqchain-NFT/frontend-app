@@ -2,10 +2,10 @@ import React from "react";
 import nftQueImage from './assets/nft-que.png'
 import Label from "../../../components/UI/Label/Label";
 
-const TokenReveal = ({ rarity, claimTitle, claim }) => {
+const TokenReveal = ({ rarity, claimTitle, claim, id }) => {
     return (
         <div className={rarity === 'que' ? 'token que' : 'token'}>
-            <div className="token__number">#? </div>
+            <div className="token__number">#{id}</div>
             <img src={nftQueImage} alt="nft image" />
             <div className="token__rarity">
                 <Label rarity={rarity}>{ rarity === 'que' ? '' : rarity }</Label>

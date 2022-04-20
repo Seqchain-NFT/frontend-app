@@ -9,7 +9,7 @@ const Label = ({ rarity }) => {
         '4': '#EB462E',
     }
     const labelText = {
-        '0': 'undefined',
+        '0': 'no rarity',
         '1': 'common',
         '2': 'rare',
         '3': 'epic',

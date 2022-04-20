@@ -12,6 +12,8 @@ import {ReactComponent as ChevronRight} from '../../../assets/chevron-right.svg'
 import Loader from "../../../components/UI/Loader/Loader";
 import TokenReveal from "./TokenReveal";
 
+const isReveal = true
+
 const Token = ({nft}) => {
     return (
         <div className={'token'}>
@@ -71,15 +73,17 @@ const TokensList = () => {
                     <h2>Your NFT’s</h2>
                 </div>
                 <ButtonOutlinePrimary onClick={onClickHandler}
-                                      // disabled={!account || nftsData.length === 0}>
-                                      disabled={true}>
+                                      disabled={!account || nftsData.length === 0}>
+                                      {/*disabled={true}>*/}
                     {pending ? <Loader name={'preloader-loader'}
                                        style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/>: buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
-                <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days"/>
+                {
+                    nftsData.length === 0 && <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days" id={'?'}/>
+                }
                 {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (
-                    <Token key={token.id} nft={token}/>
+                    isReveal ? <TokenReveal id={token.id} rarity={'que'} claimTitle="reaveal in" claim="3 days"/> : <Token key={token.id} nft={token}/>
                 ))}
             </div>
             <div className="pagination">

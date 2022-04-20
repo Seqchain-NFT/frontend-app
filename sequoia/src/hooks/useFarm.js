@@ -207,7 +207,7 @@ export function useFarm() {
                                       text={`Enable NFTs ${nftsForEnable.join(', ')} ${result.status === 1 ? 'Success' : 'Failed'} ${shortAddress(res.hash)}`}/>, result.status === 1 ? 'success' : 'error')
                 })
                 .catch((e) => {
-                    console.log(e)
+                    console.log('enable', e)
                     onToast(<ToastMessage title={'Enable NFT!'} text={`Something went wrong!`}/>, 'error')
                 })
                 .finally(() => {

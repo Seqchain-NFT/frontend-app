@@ -73,7 +73,7 @@ const TokensList = () => {
                     <h2>Your NFT’s</h2>
                 </div>
                 <ButtonOutlinePrimary onClick={onClickHandler}
-                                      disabled={!isReveal || (!account || nftsData.length === 0)}>
+                                      disabled={isReveal || (!account || nftsData.length === 0)}>
                     {pending ? <Loader name={'preloader-loader'}
                                        style={{
                                            width: '2rem',

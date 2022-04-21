@@ -12,7 +12,7 @@ import {ReactComponent as ChevronRight} from '../../../assets/chevron-right.svg'
 import Loader from "../../../components/UI/Loader/Loader";
 import TokenReveal from "./TokenReveal";
 
-const isReveal = true
+const isReveal = false
 
 const Token = ({nft}) => {
     return (
@@ -27,7 +27,7 @@ const Token = ({nft}) => {
             <div className="token__claim">
                 {
                     nft.status === '0'
-                    ?<p className="subtitle">NFT Disabled</p>
+                        ? <p className="subtitle">NFT Disabled</p>
                         : <>
                             <p className="subtitle">waiting for claim:</p>
                             <p className="claim">{shortBalance(fromWei(nft.reward.toString())) || 0}</p>
@@ -73,46 +73,55 @@ const TokensList = () => {
                     <h2>Your NFT’s</h2>
                 </div>
                 <ButtonOutlinePrimary onClick={onClickHandler}
-                                      disabled={!account || nftsData.length === 0}>
-                                      {/*disabled={true}>*/}
+                                      disabled={!isReveal || (!account || nftsData.length === 0)}>
                     {pending ? <Loader name={'preloader-loader'}
-                                       style={{width: '2rem', height: '2rem', transform: 'scale(5)'}}/>: buttonText}</ButtonOutlinePrimary>
+                                       style={{
+                                           width: '2rem',
+                                           height: '2rem',
+                                           transform: 'scale(5)'
+                                       }}/> : buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
                 {
-                    nftsData.length === 0 && <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days" id={'?'}/>
+                    nftsData.length === 0 &&
+                    <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days" id={'?'}/>
                 }
                 {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (
-                    isReveal ? <TokenReveal id={token.id} rarity={'que'} claimTitle="reaveal in" claim="3 days"/> : <Token key={token.id} nft={token}/>
+                    isReveal ? <TokenReveal id={token.id} rarity={'que'} claimTitle="reaveal in" claim="3 days"/> :
+                        <Token key={token.id} nft={token}/>
                 ))}
             </div>
-            <div className="pagination">
-                {
-                    currentPage !== 0 &&
-                    <div onClick={() => setCurrentPage(prevState => prevState - 1)}
-                         className={["page"].join(' ')}>
-                        <ChevronLeft height={16}/>
-                    </div>
-                }
-                {
-                    pages.map((page) => {
-                        return (
-                            <div key={`Page-${page}`} onClick={() => setCurrentPage(page)}
-                                 className={["page", page === currentPage ? 'active' : ''].join(' ')}>
-                                <span>{page + 1}</span>
-                            </div>
-                        )
-                    })
-                }
+            {
+                nftsData.length > 10 &&
+                <div className="pagination">
+                    {
+                        currentPage !== 0 &&
+                        <div onClick={() => setCurrentPage(prevState => prevState - 1)}
+                             className={["page"].join(' ')}>
+                            <ChevronLeft height={16}/>
+                        </div>
+                    }
+                    {
+                        pages.map((page) => {
+                            return (
+                                <div key={`Page-${page}`} onClick={() => setCurrentPage(page)}
+                                     className={["page", page === currentPage ? 'active' : ''].join(' ')}>
+                                    <span>{page + 1}</span>
+                                </div>
+                            )
+                        })
+                    }
 
-                {
-                    currentPage !== Math.floor(nftsData.length / 10) &&
-                    <div onClick={() => setCurrentPage(prevState => prevState + 1)}
-                         className={["page"].join(' ')}>
-                        <ChevronRight height={16}/>
-                    </div>
-                }
-            </div>
+                    {
+                        currentPage !== Math.floor(nftsData.length / 10) &&
+                        <div onClick={() => setCurrentPage(prevState => prevState + 1)}
+                             className={["page"].join(' ')}>
+                            <ChevronRight height={16}/>
+                        </div>
+                    }
+                </div>
+            }
+
         </div>
     )
 }

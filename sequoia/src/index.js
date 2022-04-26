@@ -11,9 +11,7 @@ import PopupContextProvider from "./context/PopupContext";
 
 ReactDOM.render(
     <HashRouter>
-
         <Web3ReactProvider getLibrary={getLibrary}>
-
             <PopupContextProvider>
                 <App/>
             </PopupContextProvider>

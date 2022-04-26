@@ -82,10 +82,10 @@ const TokensList = () => {
                                        }}/> : buttonText}</ButtonOutlinePrimary>
             </div>
             <div className="tokens-list__tokens">
-                {
-                    nftsData.length === 0 &&
-                    <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days" id={'?'}/>
-                }
+                {/*{*/}
+                {/*    nftsData.length === 0 &&*/}
+                {/*    <TokenReveal rarity={'que'} claimTitle="reaveal in" claim="3 days" id={'?'}/>*/}
+                {/*}*/}
                 {nftsData.slice(currentPage * 10, (currentPage * 10 + 10)).map((token) => (
                     isReveal ? <TokenReveal id={token.id} rarity={'que'} claimTitle="reaveal in" claim="3 days"/> :
                         <Token key={token.id} nft={token}/>

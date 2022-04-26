@@ -27,7 +27,7 @@ const SeqchainTokenAddress = {
 
 const FarmAddress = {
     [ChainId.MAINNET]: '',
-    [ChainId.TESTNET]: '0x0a6C2F368c34186AAC223D115AdCB41E3ED241a9'
+    [ChainId.TESTNET]: '0xA7f505Bb529F2F05058D5Cf57315043202b9C8c3'
 }
 
 const MulticallAddress = {
